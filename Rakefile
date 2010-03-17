@@ -5,14 +5,16 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "page-selecta"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
-    gem.email = "luke.cunningham@rea-group.com"
-    gem.homepage = "http://www.cucumber-pages.info"
+    gem.summary = %Q{simple page model for testing frameworks}
+    gem.description = %Q{DRY up your cucumber steps with a simple and easy to use page framework}
+    gem.email = "luke@icaruswings.com"
+    gem.homepage = "http://github.com/icaruswings/page-selecta"
     gem.authors = ["Luke Cunningham"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
-    gem.add_development_dependency "cucumber", ">= 0"
+    gem.add_development_dependency "rspec", ">= 1.3.0"
+    gem.add_development_dependency "cucumber", ">= 0.6.3"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "activesupport", ">= 2.3.5"
+    
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

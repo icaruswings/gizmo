@@ -4,6 +4,9 @@ require 'page-selecta'
 require 'spec'
 require 'spec/autorun'
 
-Spec::Runner.configure do |config|
-  
+module Spec::Example::ExampleGroupMethods
+  alias :context :describe
 end
+
+# Spec::Runner.configure do |config|
+# end

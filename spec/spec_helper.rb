@@ -10,3 +10,13 @@ end
 
 # Spec::Runner.configure do |config|
 # end
+
+
+module PageWithMyMixin
+  def valid?; true; end
+  def my_method; nil; end
+end
+
+module PageWithMyOtherMixin
+  def valid?; false; end
+end

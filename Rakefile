@@ -31,6 +31,8 @@ Spec::Rake::SpecTask.new(:rcov) do |spec|
   spec.libs << 'lib' << 'spec'
   spec.pattern = 'spec/**/*_spec.rb'
   spec.rcov = true
+  # spec.threshold = 100.0
+  # spec.require_exact_threshold = false
 end
 
 task :spec => :check_dependencies

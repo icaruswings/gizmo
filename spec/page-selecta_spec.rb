@@ -4,15 +4,21 @@ include PageSelecta::Helpers
 
 describe "PageSelecta" do
 
-  before(:each) do
-    PageWithMyModuleName = Module.new
-    PageWithMyModuleName.send(:define_method, :valid?) { true }
-    PageWithMyOtherModuleName = Module.new
-    PageWithMyOtherModuleName.send(:define_method, :valid?) { false }
+  describe "Page" do
+    
+    it "should have an instance attribute #mixins" do
+      PageSelecta::Page.new.should respond_to(:mixins)
+    end
+    
+    describe "#mixins" do
+      it "should return an array" do
+        PageSelecta::Page.new.mixins.should be_an(Array)
+      end
+    end
+    
   end
 
   describe "Helpers" do
-    
     it "should provide a method :on_page" do
       respond_to?(:on_page).should be_true
     end
@@ -35,26 +41,34 @@ describe "PageSelecta" do
     
     describe "on_page_with" do
       it "should raise an error if one or more module_names are given" do
-        lambda { on_page_with }.should raise_error(ArgumentError, "You must supply at least one module_name to mixin")
+        lambda { on_page_with }.should raise_error(ArgumentError, "You must supply at least one mixin")
       end
       
-      it "should yield to a block if supplied" do
-        on_page_with(:my_module_name) { |page| page.should_not be_nil }
+      it "should raise an error if module_name is not a symbol" do
+        lambda { on_page_with 'my_module_name' }.should raise_error(ArgumentError, "module_name must be a symbol")
       end
       
-      it "should yield a page object" do
-        on_page_with(:my_module_name) { |page| page.class.should equal PageSelecta::Page }
+      it "should not raise an error if module_name is a symbol" do
+        lambda { on_page_with :my_mixin }.should_not raise_error(ArgumentError, "module_name must be a symbol")
       end
       
-      it "should return an object the has the expected page mixin functionality applied" do
-        on_page_with(:my_module_name) do |page|
-          page.should be_valid
+      it "should yield something to a block if supplied" do
+        on_page_with(:my_mixin) { |page| page.should_not be_nil }
+      end
+      
+      it "should yield a page object to a block" do
+        on_page_with(:my_mixin) { |page| page.should be_a PageSelecta::Page }
+      end
+      
+      it "should return a page object which has been extended to include the mixin functionality" do
+        on_page_with(:my_mixin) do |page|
+          page.should respond_to :my_method
         end
       end
       
-      it "should return an object the has the expected page mixin functionality applied" do
-        on_page_with(:my_module_name, :my_other_module_name) do |page|
-          page.should_not be_valid
+      it "should add the mixin name to the Page's mixin instance attribute" do
+        on_page_with(:my_mixin, :my_other_mixin) do |page|
+          [:my_mixin, :my_other_mixin].each { |mixin| page.mixins.should include mixin }
         end
       end
     end

@@ -14,23 +14,13 @@ describe "PageSelecta" do
     it "should have an instance attribute #mixins" do
       @page.should respond_to(:mixins)
     end
-    
-    it "should have an instance attribute #url" do
-      @page.should respond_to(:url)
-    end
-    
+        
     describe "#mixins" do
       it "should return an array" do
         @page.mixins.should be_an(Array)
       end
     end
-    
-    describe "#url" do
-      it "should return the current_url" do
-        @page.url.should equal @current_url
-      end
-    end
-    
+        
   end
   
   

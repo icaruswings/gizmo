@@ -3,28 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 include PageSelecta::Helpers
 
 describe "PageSelecta" do
-  
-  before do
-    @page = PageSelecta::Page.new
-  end
-  
-  
-  describe "Page" do
-    
-    it "should have an instance attribute #mixins" do
-      @page.should respond_to(:mixins)
-    end
-        
-    describe "#mixins" do
-      it "should return an array" do
-        @page.mixins.should be_an(Array)
-      end
-    end
-        
-  end
-  
-  
+
   describe "Helpers" do
+    
     it "should provide a method :on_page" do
       respond_to?(:on_page).should be_true
     end
@@ -62,6 +43,10 @@ describe "PageSelecta" do
         lambda { on_page_with :my_mixin }.should_not raise_error(ArgumentError, "module_name must be a symbol")
       end
       
+      it "should not raise an error if multiple module_names are given" do
+        lambda { on_page_with :my_mixin, :my_other_mixin }.should_not raise_error(ArgumentError, "module_name must be a symbol")
+      end
+      
       it "should yield something to a block if supplied" do
         on_page_with(:my_mixin) { |page| page.should_not be_nil }
       end
@@ -82,7 +67,5 @@ describe "PageSelecta" do
         end
       end
     end
-
   end
-
 end

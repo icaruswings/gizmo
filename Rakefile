@@ -12,9 +12,11 @@ begin
     gem.authors = ["Luke Cunningham"]
     gem.add_development_dependency "rspec", ">= 1.3.0"
     gem.add_development_dependency "cucumber", ">= 0.6.3"
+    gem.add_development_dependency "webrat", ">= 0.7.0"
+    gem.add_development_dependency "capybara", ">= 0.3.5"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "nokogiri", ">= 1.4.1"
     gem.add_dependency "activesupport", ">= 2.3.5"
-    
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

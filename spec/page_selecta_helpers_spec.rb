@@ -1,10 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-include PageSelecta::Helpers
-
 describe "PageSelecta" do
 
-  describe "Helpers" do
+  describe "Helpers" do    
     
     it "should provide a method :on_page" do
       respond_to?(:on_page).should be_true
@@ -15,7 +13,7 @@ describe "PageSelecta" do
     end
     
     
-    describe "on_page" do
+    describe "#on_page" do
       it "should raise an error if no block given" do
         lambda { on_page }.should raise_error(ArgumentError, "You must supply a block argument")
       end
@@ -30,21 +28,25 @@ describe "PageSelecta" do
     end
     
     
-    describe "on_page_with" do
+    describe "#on_page_with" do
       it "should raise an error if one or more module_names are given" do
         lambda { on_page_with }.should raise_error(ArgumentError, "You must supply at least one mixin")
       end
       
-      it "should raise an error if module_name is not a symbol" do
+      it "should raise an ArgumentError if module_name is not a symbol" do
         lambda { on_page_with 'my_module_name' }.should raise_error(ArgumentError, "module_name must be a symbol")
       end
       
       it "should not raise an error if module_name is a symbol" do
-        lambda { on_page_with :my_mixin }.should_not raise_error(ArgumentError, "module_name must be a symbol")
+        lambda { on_page_with :my_mixin }.should_not raise_error
       end
       
-      it "should not raise an error if multiple module_names are given" do
+      it "should not raise ArgumentError if multiple module_names are given" do
         lambda { on_page_with :my_mixin, :my_other_mixin }.should_not raise_error(ArgumentError, "module_name must be a symbol")
+      end
+      
+      it "should raise PageSelecta::MixinNotValidError if the mixin is not valid" do
+        lambda { on_page_with :my_invalid_mixin }.should raise_error(PageSelecta::MixinNotValidError, "Page did not have my_invalid_mixin at http://www.example.com")
       end
       
       it "should yield something to a block if supplied" do

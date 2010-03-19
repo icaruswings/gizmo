@@ -1,6 +1,6 @@
 = page-selecta
 
-Description goes here.
+DRY up your cucumber steps with a simple and easy to use page framework.
 
 == Note on Patches/Pull Requests
  

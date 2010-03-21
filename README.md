@@ -1,6 +1,7 @@
-= page-selecta
+page-selecta
+============
 
-DRY up your cucumber steps with a simple and easy to use page framework.
+#### DRY up your cucumber steps with a simple and easy to use page framework. ####
 
 this projects is a work in progress, and not ready to be used yet!
 
@@ -8,7 +9,7 @@ see this gist for useage:
 http://gist.github.com/339570
 
 
-== Note on Patches/Pull Requests
+### Note on Patches/Pull Requests ###
  
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -18,6 +19,6 @@ http://gist.github.com/339570
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Copyright
+### Copyright ###
 
 Copyright (c) 2010 Luke Cunningham. See LICENSE for details.

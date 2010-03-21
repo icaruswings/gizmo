@@ -3,7 +3,7 @@ page-selecta
 
 #### DRY up your cucumber steps with a simple and easy to use page framework. ####
 
-this projects is a work in progress, and not ready to be used yet!
+this project is a work in progress, and not ready to be used yet!
 
 see this gist for useage:
 http://gist.github.com/339570

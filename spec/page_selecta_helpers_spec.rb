@@ -23,7 +23,7 @@ describe "PageSelecta" do
       end
       
       it "should yield a page object" do
-        on_page { |page| page.class.should equal PageSelecta::Page }
+        on_page { |page| page.should be_a PageSelecta::Page }
       end
     end
     
@@ -49,7 +49,7 @@ describe "PageSelecta" do
         lambda { on_page_with :my_invalid_mixin }.should raise_error(PageSelecta::MixinNotValidError, "Page did not have my_invalid_mixin at http://www.example.com")
       end
       
-      it "should yield something to a block if supplied" do
+      it "should yield a page object to a block if supplied" do
         on_page_with(:my_mixin) { |page| page.should_not be_nil }
       end
       

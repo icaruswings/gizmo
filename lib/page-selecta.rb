@@ -8,6 +8,7 @@ module PageSelecta
 
   MixinNotValidError = Class.new(RuntimeError)
 
+  autoload :Config, "config"
   autoload :Page, "page"
   autoload :Helpers, "helpers"
 

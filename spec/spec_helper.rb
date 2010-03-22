@@ -24,10 +24,6 @@ Spec::Runner.configure do |config|
     eos
     @response ||= mock('response', :body => mock_response, :uri => 'http://www.example.com')
   end
-
-  config.before :each do
-    @page = PageSelecta::Page.new(self, response.body, response.uri)
-  end
   
 end
 

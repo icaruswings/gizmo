@@ -30,7 +30,6 @@ module PageSelecta
       # ==== Examples
       #   PageSelecta::Config.setup do |config|
       #     config[:mixin_path] = true
-      #     config.debug        = false
       #   end
       # 
       def setup

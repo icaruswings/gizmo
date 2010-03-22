@@ -3,6 +3,10 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe "PageSelecta" do
   
   describe "Page" do
+
+    before(:each) do
+      @page = PageSelecta::Page.new(self, response.body, response.uri)
+    end
     
     describe "attributes and accessors" do
 

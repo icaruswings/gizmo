@@ -58,11 +58,11 @@ describe "PageSelecta" do
     end
     
     describe ".method_missing" do
-      it "should be overridden to allow another way of reading configuration options" do
+      it "should be overridden to allow reading configuration options" do
         PageSelecta::Config.should_not respond_to :mixin_path        
         PageSelecta::Config.mixin_path.should == @defaults[:mixin_path]
       end
-      it "should be overridden to allow another way of writing configuration options" do
+      it "should be overridden to allow setting of writing configuration options" do
         PageSelecta::Config.should_not respond_to :mixin_path=
         PageSelecta::Config.mixin_path = "path/to/my/page/mixins"
         PageSelecta::Config.configuration[:mixin_path].should == "path/to/my/page/mixins"

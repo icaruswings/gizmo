@@ -5,7 +5,26 @@ page-selecta
 
 this project is a work in progress, and not ready to be used yet!
 
-**see [this gist](http://gist.github.com/339570) for useage.**
+## Usage ##
+
+see [this gist](http://gist.github.com/339570)
+
+
+**for cucumber:**
+
+* write your features just like you usually would
+* require 'page-selecta' and add the helpers to the World
+* generate your page mixins and fill them out with your page selectors
+* use the page model when writing your steps
+
+
+**for rspec:**
+
+* require 'page-selecta' in your spec_helper and include PageSelecta::Helpers methods
+* generate your page mixins and fill them out with your page selectors
+* use the page model when writing your specs
+
+
 
 ### Note on Patches/Pull Requests ###
  

@@ -5,9 +5,7 @@ page-selecta
 
 this project is a work in progress, and not ready to be used yet!
 
-see this gist for useage:
-http://gist.github.com/339570
-
+**see [this gist](http://gist.github.com/339570) for useage.**
 
 ### Note on Patches/Pull Requests ###
  

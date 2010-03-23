@@ -1,11 +1,11 @@
 page-selecta
 ============
 
-#### DRY up your cucumber steps with a simple and easy to use page framework. ####
+### DRY up your cucumber steps with a simple and easy to use page framework. ###
 
-page-selecta is a simple page model testing framework used and sponsored by realestate.com.au. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suite. Based on concepts brought to REA by Mark Ryall
+page-selecta is a simple page model testing framework used and sponsored by [realestate.com.au](http://www.realestate.com.au). The aim of the project is to DRY up testing assertions by abstracting code that defines your page, resulting in a consistent, easy to maintain test suite.
 
-this project is a work in progress, and not yet ready to be used for its intended purpose!
+**this project is a work in progress, and not yet ready to be used for its intended purpose!**
 
 
 ## Usage ##
@@ -15,7 +15,7 @@ see [this gist](http://gist.github.com/339570) for some code examples
 **for cucumber:**
 
 * write your features just like you usually would
-* require 'page-selecta' and add the helpers to the World
+* require 'page-selecta' and add the PageSelecta::Helpers to the World
 * generate your page mixins and fill them out with your page selectors
 * use the page model when writing your steps
 

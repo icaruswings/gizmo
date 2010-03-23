@@ -1,15 +1,16 @@
 page-selecta
 ============
 
-
 #### DRY up your cucumber steps with a simple and easy to use page framework. ####
 
-this project is a work in progress, and not ready to be used yet!
+page-selecta is a simple page model for use in multiple ruby testing frameworks used and sponsored by realestate.com.au. The aim of the project is to dry up your testing assertions by abstracting code that defines the page you are testing resulting in a consistent, easy to maintain test suite
+
+this project is a work in progress, and not yet ready to be used for its intended purpose!
+
 
 ## Usage ##
 
-see [this gist](http://gist.github.com/339570)
-
+see [this gist](http://gist.github.com/339570) for some code examples
 
 **for cucumber:**
 
@@ -25,9 +26,7 @@ see [this gist](http://gist.github.com/339570)
 * generate your page mixins and fill them out with your page selectors
 * use the page model when writing your specs
 
-
-
-### Note on Patches/Pull Requests ###
+## Note on Patches/Pull Requests ##
  
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -37,6 +36,6 @@ see [this gist](http://gist.github.com/339570)
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-### Copyright ###
+## Copyright ##
 
 Copyright (c) 2010 Luke Cunningham. See LICENSE for details.

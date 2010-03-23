@@ -3,7 +3,7 @@ page-selecta
 
 #### DRY up your cucumber steps with a simple and easy to use page framework. ####
 
-page-selecta is a simple page model testing framework used and sponsored by realestate.com.au. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suite
+page-selecta is a simple page model testing framework used and sponsored by realestate.com.au. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suite. Based on concepts brought to REA by Mark Ryall
 
 this project is a work in progress, and not yet ready to be used for its intended purpose!
 

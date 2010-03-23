@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "page-selecta"
-    gem.summary = %Q{simple page model for testing frameworks}
-    gem.description = %Q{DRY up your cucumber steps with a simple and easy to use page framework}
+    gem.summary = %Q{simple page model testing framework}
+    gem.description = %Q{page-selecta is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
     gem.email = "luke@icaruswings.com"
     gem.homepage = "http://github.com/icaruswings/page-selecta"
     gem.authors = ["Luke Cunningham"]

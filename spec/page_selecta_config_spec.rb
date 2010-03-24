@@ -5,8 +5,11 @@ describe "PageSelecta" do
   describe "Config" do
     
     before(:each) do
-      PageSelecta::Config.reset
       @defaults = PageSelecta::Config.defaults
+    end
+    
+    after(:each) do
+      PageSelecta::Config.reset
     end
     
     describe ".defaults" do
@@ -56,7 +59,7 @@ describe "PageSelecta" do
         PageSelecta::Config.setup { |conf| conf.should == PageSelecta::Config }
       end
     end
-    
+        
     describe ".method_missing" do
       it "should be overridden to allow reading configuration options" do
         PageSelecta::Config.should_not respond_to :mixin_path        

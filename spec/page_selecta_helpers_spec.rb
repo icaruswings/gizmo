@@ -12,7 +12,6 @@ describe "PageSelecta" do
       respond_to?(:on_page_with).should be_true
     end
     
-    
     describe "#on_page" do
       it "should raise an error if no block given" do
         lambda { on_page }.should raise_error(ArgumentError, "You must supply a block argument")

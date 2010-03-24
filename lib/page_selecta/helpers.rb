@@ -1,7 +1,7 @@
 module PageSelecta
     
   module Helpers
-    
+            
     def on_page &block
       raise ArgumentError, 'You must supply a block argument' unless block.is_a? Proc
       yield Page.new(self, response.body, response.uri)

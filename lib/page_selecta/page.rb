@@ -21,8 +21,8 @@ module PageSelecta
     # end
     def valid?; true; end
     
-    def has_selector? selector
-      @document.css(selector).length > 0
+    def has_selector? css_selector
+      @document.css(css_selector).length > 0
     end
     
   end

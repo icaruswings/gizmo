@@ -2,7 +2,7 @@ module PageSelecta
   
   class Page
 
-    attr_reader :mixins, :url
+    attr_reader :mixins, :url, :document
     
     def initialize driver, content, url
       @mixins = []

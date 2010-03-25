@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe "PageSelecta" do
 
@@ -24,6 +24,12 @@ describe "PageSelecta" do
       it "should yield a page object" do
         on_page { |page| page.should be_a PageSelecta::Page }
       end
+      
+      it "should raise an error if the response object is nil" do
+        response.stub!(:nil?).and_return(true)
+        lambda { on_page { |page| page } }.should raise_error(PageSelecta::NilResponseError, "Doh! response object is nil. This generally means your scenario has not yet visited a page!")
+      end
+      
     end
     
     

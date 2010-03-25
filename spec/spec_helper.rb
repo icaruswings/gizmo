@@ -22,7 +22,11 @@ Spec::Runner.configure do |config|
         </body>
       </html>
     eos
-    @response ||= mock('response', :body => mock_response, :uri => 'http://www.example.com')
+    @response ||= mock('response', :body => mock_response)
+  end
+  
+  def current_url
+    'http://www.example.com'
   end
   
 end

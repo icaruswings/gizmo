@@ -3,8 +3,9 @@ module PageSelecta
   module Helpers
             
     def on_page &block
+      raise NilResponseError, "Doh! response object is nil. This generally means your scenario has not yet visited a page!" if response.nil?      
       raise ArgumentError, 'You must supply a block argument' unless block.is_a? Proc
-      yield Page.new(self, response.body, response.uri)
+      yield Page.new(self, response.body, current_url)
     end
     
     def on_page_with *module_names

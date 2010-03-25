@@ -1,11 +1,11 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe "PageSelecta" do
   
   describe "Page" do
 
     before(:each) do
-      @page = PageSelecta::Page.new(self, response.body, response.uri)
+      @page = PageSelecta::Page.new(self, response.body, current_url)
     end
     
     describe "attributes and accessors" do
@@ -64,6 +64,14 @@ describe "PageSelecta" do
 
       it "should not have an attribute writer for @url" do
         @page.should_not respond_to(:url=)
+      end
+      
+      it "should have attribute reader for @document" do
+        @page.should respond_to(:document)
+      end
+      
+      it "should have attribute writer for @document" do
+        @page.should_not respond_to(:document=)
       end
 
     end

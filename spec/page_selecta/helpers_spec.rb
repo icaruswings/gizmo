@@ -4,6 +4,28 @@ describe "PageSelecta" do
 
   describe "Helpers" do    
     
+    before do
+      def response
+        mock_response = <<-eos
+          <html>
+            <head>
+              <title>my awesome web page</title>
+            </head>
+            <body>
+              <p class="one_of_these">paragraph one</p>
+              <p class="two_of_these">paragraph two</p>
+              <p class="two_of_these">paragraph three</p>
+            </body>
+          </html>
+        eos
+        @response ||= mock('response', :body => mock_response)
+      end
+
+      def current_url
+        'http://www.example.com'
+      end
+    end
+    
     it "should provide a method :on_page" do
       respond_to?(:on_page).should be_true
     end

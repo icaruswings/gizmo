@@ -4,7 +4,27 @@ describe "PageSelecta" do
   
   describe "Page" do
 
-    before(:each) do
+    before do
+      def response
+        mock_response = <<-eos
+          <html>
+            <head>
+              <title>my awesome web page</title>
+            </head>
+            <body>
+              <p class="one_of_these">paragraph one</p>
+              <p class="two_of_these">paragraph two</p>
+              <p class="two_of_these">paragraph three</p>
+            </body>
+          </html>
+        eos
+        @response ||= mock('response', :body => mock_response)
+      end
+
+      def current_url
+        'http://www.example.com'
+      end
+
       @page = PageSelecta::Page.new(self, response.body, current_url)
     end
     
@@ -29,8 +49,8 @@ describe "PageSelecta" do
       end
       
       describe "@url" do
-        it "should description" do
-          @page.instance_variable_get(:@url).should be_a String
+        it "should return the expected string" do
+          @page.instance_variable_get(:@url).should == "http://www.example.com"
         end
       end
       

@@ -33,9 +33,7 @@ Spec::Rake::SpecTask.new(:rcov) do |spec|
   spec.libs << 'lib' << 'spec'
   spec.pattern = 'spec/**/*_spec.rb'
   spec.rcov = true
-  spec.rcov_opts = ['--failure-threshold', 100]
-  # spec.threshold = 100.0
-  # spec.require_exact_threshold = false
+  spec.rcov_opts = ['--failure-threshold', 100, '--exclude', 'features']
 end
 
 task :spec => :check_dependencies

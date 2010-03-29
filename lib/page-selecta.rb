@@ -13,5 +13,11 @@ module PageSelecta
   autoload :Page,     "page"
   autoload :Helpers,  "helpers"
   autoload :Generate, "generate"
+  
+  def self.load_mixins! mixin_dir
+    Dir[mixin_dir + "/**/page_with*.rb"].each { |path| require path }
+  end
 
 end
+
+require 'extras'

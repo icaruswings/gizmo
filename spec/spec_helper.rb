@@ -6,29 +6,11 @@ require 'spec/autorun'
 begin require 'redgreen' unless ENV['TM_CURRENT_LINE']; rescue LoadError; end
 
 Spec::Runner.configure do |config|
-  
   include PageSelecta::Helpers
-  
-  def response
-    mock_response = <<-eos
-      <html>
-        <head>
-          <title>my awesome web page</title>
-        </head>
-        <body>
-          <p class="one_of_these">paragraph one</p>
-          <p class="two_of_these">paragraph two</p>
-          <p class="two_of_these">paragraph three</p>
-        </body>
-      </html>
-    eos
-    @response ||= mock('response', :body => mock_response)
-  end
-  
-  def current_url
-    'http://www.example.com'
-  end
-  
+end
+
+module PageWithMyOpenstruct
+  def my_openstruct; OpenStruct; end
 end
 
 module PageWithMyMixin

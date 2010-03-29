@@ -34,6 +34,7 @@ module PageSelecta
       # 
       def setup
         yield self
+        load_mixins
         nil
       end
       

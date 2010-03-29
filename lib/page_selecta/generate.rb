@@ -8,7 +8,7 @@ module PageSelecta
       end
       
       def mixin! name
-        puts File.join(Dir.pwd, Config.mixin_path)
+        File.join(Dir.pwd, Config.mixin_path)
       end
        
     end

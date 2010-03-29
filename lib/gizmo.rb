@@ -2,9 +2,9 @@ require 'rubygems'
 require 'active_support'
 require 'nokogiri'
 
-$LOAD_PATH << File.dirname(__FILE__) + '/page_selecta'
+$LOAD_PATH << File.dirname(__FILE__) + '/gizmo'
 
-module PageSelecta
+module Gizmo
 
   MixinNotValidError = Class.new(RuntimeError)
   NilResponseError = Class.new(RuntimeError)
@@ -13,7 +13,7 @@ module PageSelecta
   autoload :Page,     "page"
   autoload :Helpers,  "helpers"
   autoload :Generate, "generate"
-  
+
   def self.load_mixins! mixin_dir
     Dir[mixin_dir + "/**/page_with*.rb"].each { |path| require path }
   end

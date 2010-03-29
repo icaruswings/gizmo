@@ -10,6 +10,6 @@ Capybara.default_driver = :selenium
 Capybara.run_server = false
 
 #page-selecta!!!
-require 'page-selecta'
-PageSelecta.load_mixins! File.join(File.dirname(__FILE__), "pages")
-World(PageSelecta::Helpers)
+require 'gizmo'
+Gizmo.load_mixins! File.join(File.dirname(__FILE__), "pages")
+World(Gizmo::Helpers)

@@ -4,11 +4,11 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "page-selecta"
+    gem.name = "gizmo"
     gem.summary = %Q{simple page model testing framework}
-    gem.description = %Q{page-selecta is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
+    gem.description = %Q{gizmo is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
     gem.email = "luke@icaruswings.com"
-    gem.homepage = "http://github.com/icaruswings/page-selecta"
+    gem.homepage = "http://github.com/icaruswings/gizmo"
     gem.authors = ["Luke Cunningham"]
     gem.add_development_dependency "rspec", ">= 1.3.0"
     gem.add_development_dependency "cucumber", ">= 0.6.3"
@@ -81,7 +81,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "page-selecta #{version}"
+  rdoc.title = "gizmo #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

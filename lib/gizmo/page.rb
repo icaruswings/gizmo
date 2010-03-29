@@ -1,16 +1,16 @@
-module PageSelecta
-  
+module Gizmo
+
   class Page
 
     attr_reader :mixins, :url, :document
-    
+
     def initialize driver, content, url
       @mixins = []
       @browser = driver
       @document = Nokogiri::HTML(content)
       @url = url
     end
-    
+
     # Pages are valid by default -
     # specific mixins should change this behaviour
     # to require certain elements on the page
@@ -20,11 +20,11 @@ module PageSelecta
     #   has_selector('some_element_selector')
     # end
     def valid?; true; end
-    
+
     def has_selector? css_selector
       @document.css(css_selector).length > 0
     end
-    
+
   end
-  
+
 end

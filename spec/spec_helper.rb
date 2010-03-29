@@ -1,12 +1,12 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-require 'page-selecta'
+require 'gizmo'
 require 'spec'
 require 'spec/autorun'
 
 begin require 'redgreen' unless ENV['TM_CURRENT_LINE']; rescue LoadError; end
 
 Spec::Runner.configure do |config|
-  include PageSelecta::Helpers
+  include Gizmo::Helpers
 end
 
 module PageWithMyOpenstruct

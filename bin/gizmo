@@ -5,7 +5,7 @@ require 'optparse'
 require 'active_support'
 
 $LOAD_PATH << File.dirname(__FILE__) + '/../lib'
-require 'page-selecta'
+require 'gizmo'
 
 @current_mixin = nil
 
@@ -16,13 +16,13 @@ end
 
 opts = OptionParser.new do |opts|
 
-  opts.on("-v", "--version", "what's the version number kenneth?") do
-    puts "page-selecta version: 0.0.0"
+  opts.on("-v", "--version", "what's the frequency kenneth?") do
+    puts "gizmo version: 0.0.0"
   end
 
 
   opts.on("-g", "--generate-mixin [NAME]", "generate a new page mixin") do |mixin_name|
-    File.open("#{PageSelecta::Config.mixin_path}/page_with_#{mixin_name}.rb", "w") do |file|
+    File.open("#{Gizmo::Config.mixin_path}/page_with_#{mixin_name}.rb", "w") do |file|
       content = <<-EOS
         module PageWith#{mixin_name.camelize}
           # def valid
@@ -35,9 +35,9 @@ opts = OptionParser.new do |opts|
   end
 
   opts.on("-p", "--with-page [NAME]") do |mixin_name|
-    PageSelecta.load_mixins! File.join(Dir.pwd, PageSelecta::Config.mixin_path)
+    Gizmo.load_mixins! File.join(Dir.pwd, Gizmo::Config.mixin_path)
     mixin = Object.const_get("PageWith" + mixin_name.camelize)
-    @current_mixin = { :name => mixin_name, :obj => PageSelecta::Page.new({}, '', {}).extend(mixin) }
+    @current_mixin = { :name => mixin_name, :obj => Gizmo::Page.new({}, '', {}).extend(mixin) }
   end
 
   opts.on('-m', '--list-methods', 'list all the methods for a mixin') do

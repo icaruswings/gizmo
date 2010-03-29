@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe "PageSelecta" do
+describe "Gizmo" do
   
   describe "Extras" do
   

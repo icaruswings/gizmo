@@ -1,10 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-PageSelecta.load_mixins! File.join(File.dirname(__FILE__), '../features/support/page_mixins/')
+PageSelecta.load_mixins! File.join(File.dirname(__FILE__), '../features/support/pages/')
 
-Dir[File.dirname(__FILE__) + '/../features/support/page_mixins/*'].each do |path|
-  require path if path =~ /page_with.+\.rb$/
-end
+# Dir[File.dirname(__FILE__) + '/../features/support/pages/*'].each do |path|
+#   require path if path =~ /page_with.+\.rb$/
+# end
 
 require 'capybara'
 require 'capybara/dsl'

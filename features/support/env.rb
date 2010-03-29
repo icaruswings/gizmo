@@ -11,5 +11,5 @@ Capybara.run_server = false
 
 #page-selecta!!!
 require 'page-selecta'
-PageSelecta.load_mixins! File.join(File.dirname(__FILE__), "page_mixins")
+PageSelecta.load_mixins! File.join(File.dirname(__FILE__), "pages")
 World(PageSelecta::Helpers)

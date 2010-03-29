@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+# coding: utf-8
+
+require 'optparse'
+require 'active_support'
+
+$LOAD_PATH << File.dirname(__FILE__) + '/../lib'
+require 'page-selecta'
+
+@current_mixin = nil
+
+def puts_list methods
+  return puts "[]" if methods.empty?
+  puts methods.sort.join(', ')
+end
+
+opts = OptionParser.new do |opts|
+
+  opts.on("-v", "--version", "what's the version number kenneth?") do
+    puts "page-selecta version: 0.0.0"
+  end
+
+
+  opts.on("-g", "--generate-mixin [NAME]", "generate a new page mixin") do |mixin_name|
+    File.open("#{PageSelecta::Config.mixin_path}/page_with_#{mixin_name}.rb", "w") do |file|
+      content = <<-EOS
+        module PageWith#{mixin_name.camelize}
+          # def valid
+          #  has_selector?('my-container')
+          # end
+        end
+      EOS
+      file.write(content.strip)
+    end
+  end
+
+  opts.on("-p", "--with-page [NAME]") do |mixin_name|
+    PageSelecta.load_mixins! File.join(Dir.pwd, PageSelecta::Config.mixin_path)
+    mixin = Object.const_get("PageWith" + mixin_name.camelize)
+    @current_mixin = { :name => mixin_name, :obj => PageSelecta::Page.new({}, '', {}).extend(mixin) }
+  end
+
+  opts.on('-m', '--list-methods', 'list all the methods for a mixin') do
+    puts "---- methods for #{@current_mixin[:name]} ----"
+    puts_list @current_mixin[:obj].methods
+  end
+
+  opts.on('-f', '--filter-methods [QUERY]', 'filter methods for a mixin') do |query|
+    puts "---- methods for #{@current_mixin[:name]} matching #{query} ----"
+    puts_list @current_mixin[:obj].methods.select { |m| m =~ /#{query}/ }
+  end
+
+end
+
+
+if ARGV.size == 0
+  puts "DRY up your acceptance tests. \ntype --help for a list of commands"
+  exit 1
+end
+
+opts.parse!
+
+@current_mixin = nil

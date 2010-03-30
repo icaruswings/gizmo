@@ -28,7 +28,7 @@ module Gizmo
       # Yields the configuration
       #
       # ==== Examples
-      #   PageSelecta::Config.setup do |config|
+      #   Gizmo::Config.setup do |config|
       #     config[:mixin_path] = true
       #   end
       #
@@ -38,11 +38,11 @@ module Gizmo
         nil
       end
 
-      # allow getting and setting properties via PageSelecta::Config.xxx
+      # allow getting and setting properties via Gizmo::Config.xxx
       #
       # ==== Examples
-      # PageSelecta::Config.mixin_path
-      # PageSelecta::Config.mixin_path = 'spec/pages'
+      # Gizmo::Config.mixin_path
+      # Gizmo::Config.mixin_path = 'spec/pages'
       #
       def method_missing(method, *args)
         return configuration[method] unless method.to_s[-1, 1] == '='

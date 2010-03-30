@@ -20,7 +20,6 @@ opts = OptionParser.new do |opts|
     puts "gizmo version: 0.0.0"
   end
 
-
   opts.on("-g", "--generate-mixin [NAME]", "generate a new page mixin") do |mixin_name|
     File.open("#{Gizmo::Config.mixin_path}/page_with_#{mixin_name}.rb", "w") do |file|
       content = <<-EOS

@@ -2,22 +2,19 @@ require 'rubygems'
 require 'active_support'
 require 'nokogiri'
 
-$LOAD_PATH << File.dirname(__FILE__) + '/gizmo'
+$LOAD_PATH << File.dirname(__FILE__)
 
 module Gizmo
 
-  MixinNotValidError = Class.new(RuntimeError)
-  NilResponseError = Class.new(RuntimeError)
+  autoload :Page,       "gizmo/page"
+  autoload :Helpers,    "gizmo/helpers"
+  autoload :Generate,   "gizmo/generate"
 
-  autoload :Config,   "config"
-  autoload :Page,     "page"
-  autoload :Helpers,  "helpers"
-  autoload :Generate, "generate"
-
-  def self.load_mixins! mixin_dir
-    Dir[mixin_dir + "/**/page_with*.rb"].each { |path| require path }
-  end
+  GizmoError = Class.new(StandardError)
+  MixinNotValidError = Class.new(GizmoError)
+  MixinNotFoundError = Class.new(GizmoError)
+  NilResponseError = Class.new(GizmoError)
 
 end
-
-require 'extras'
+require "gizmo/configuration"
+require "gizmo/extras"

@@ -1,7 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-Gizmo.load_mixins! File.join(File.dirname(__FILE__), '../features/support/pages/')
-
 # Dir[File.dirname(__FILE__) + '/../features/support/pages/*'].each do |path|
 #   require path if path =~ /page_with.+\.rb$/
 # end
@@ -18,6 +16,12 @@ end
 
 
 describe "Github" do
+
+  before do
+    Gizmo.configure do |config|
+      config.mixin_dir = File.join(File.dirname(__FILE__), '../features/support/pages/')
+    end
+  end
 
   describe "Home Page Search" do
 

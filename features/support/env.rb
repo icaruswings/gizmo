@@ -11,5 +11,8 @@ Capybara.run_server = false
 
 #page-selecta!!!
 require 'gizmo'
-Gizmo.load_mixins! File.join(File.dirname(__FILE__), "pages")
 World(Gizmo::Helpers)
+
+Gizmo.configure do |config|
+  config.mixin_dir = File.dirname(__FILE__) + '/features/support/pages'
+end

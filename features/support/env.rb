@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
+# $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
 
 require 'spec/expectations'
 
@@ -9,7 +9,7 @@ require 'features/support/patches/capybara'
 Capybara.default_driver = :selenium
 Capybara.run_server = false
 
-#page-selecta!!!
+#gizmo!!!
 require 'gizmo'
 World(Gizmo::Helpers)
 

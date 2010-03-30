@@ -5,10 +5,10 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gizmo}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Luke Cunningham", "Steven Holloway"]
+  s.authors = ["Luke Cunningham", "Steven Holloway", "Sam Weller"]
   s.date = %q{2010-03-30}
   s.default_executable = %q{gizmo}
   s.description = %q{gizmo is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
      "features/support/pages/page_with_github_search.rb",
      "features/support/pages/page_with_github_search_results.rb",
      "features/support/patches/capybara.rb",
+     "gizmo.gemspec",
      "lib/gizmo.rb",
      "lib/gizmo/configuration.rb",
      "lib/gizmo/extras.rb",

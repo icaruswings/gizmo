@@ -36,7 +36,7 @@ describe "Gizmo" do
 
     describe "#on_page" do
       it "should raise an error if no block given" do
-        lambda { on_page }.should raise_error(ArgumentError, "You must supply a block argument")
+        lambda { on_page }.should raise_error("no block given")
       end
 
       it "should not raise an error if given a block" do
@@ -77,7 +77,7 @@ describe "Gizmo" do
       end
 
       it "should raise Gizmo::MixinNotFoundError if the mixin file cannot be loaded from the mixin_path" do
-        lambda { on_page_with :my_non_existent_mixin }.should raise_error(Gizmo::MixinNotFoundError, "Expected a page mixin file at /Users/luke_cunningham/projects/icaruswings/gizmo/spec/pages/page_with_my_non_existent_mixin.rb generate one with gizmo -g my_non_existent_mixin")
+        lambda { on_page_with :my_non_existent_mixin }.should raise_error(Gizmo::MixinNotFoundError, "Expected a page mixin file at /Users/luke_cunningham/projects/icaruswings/gizmo/spec/pages/page_with_my_non_existent_mixin.rb generate one with `gizmo -g my_non_existent_mixin`")
       end
 
       it "should yield a page object to a block if supplied" do
@@ -94,11 +94,6 @@ describe "Gizmo" do
         end
       end
 
-      it "should add the mixin name to the Page's mixin instance attribute" do
-        on_page_with(:my_mixin, :my_other_mixin) do |page|
-          [:my_mixin, :my_other_mixin].each { |mixin| page.mixins.should include mixin }
-        end
-      end
     end
   end
 end

@@ -96,6 +96,16 @@ describe "Gizmo" do
 
     end
 
+    describe "#extended_with" do
+
+      it "should add the mixin name to the Page's @mixin instance attribute" do
+        on_page_with(:my_mixin, :my_other_mixin) do |page|
+          [:my_mixin, :my_other_mixin].each { |m| page.mixins.should include Object.const_get("PageWith#{m.to_s.camelize}") }
+        end
+      end
+
+    end
+
     describe "#has_selector?" do
 
       it "should return true if @document contains one or more elements matching the selector" do

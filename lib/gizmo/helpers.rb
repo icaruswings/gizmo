@@ -4,7 +4,6 @@ module Gizmo
 
     def on_page &block
       raise NilResponseError, "Doh! response object is nil. This generally means your scenario has not yet visited a page!" if response.nil?
-      raise ArgumentError, 'You must supply a block argument' unless block.is_a? Proc
       yield Page.new(self, response.body, current_url)
     end
 
@@ -13,18 +12,27 @@ module Gizmo
       on_page do |page|
         module_names.each do |module_name|
           raise ArgumentError, 'module_name must be a symbol' unless module_name.is_a?(Symbol)
-          const_name = "PageWith#{module_name.to_s.camelize}"
-          begin
-            require "#{Gizmo.configuration.mixin_dir}/page_with_#{module_name}.rb" unless Object.const_defined?(const_name)
-          rescue LoadError
-            raise MixinNotFoundError, "Expected a page mixin file at #{Gizmo.configuration.mixin_dir}/page_with_#{module_name}.rb generate one with gizmo -g #{module_name}"
-          end
-          page.extend(Object.const_get(const_name))
-          raise MixinNotValidError, "Page did not have #{module_name} at #{page.url}" unless page.valid?
-          page.mixins << module_name
+          add_mixin_to_page page, module_name
         end
         yield page if block_given?
       end
+    end
+
+    private
+
+    def load_mixin! mixin_name
+      begin
+        const_name = "PageWith#{mixin_name.to_s.camelize}"
+        require "#{Gizmo.configuration.mixin_dir}/page_with_#{mixin_name}.rb" unless Object.const_defined?(const_name)
+        Object.const_get(const_name)
+      rescue LoadError
+        raise MixinNotFoundError, "Expected a page mixin file at #{Gizmo.configuration.mixin_dir}/page_with_#{mixin_name}.rb generate one with `gizmo -g #{mixin_name}`"
+      end
+    end
+
+    def add_mixin_to_page page, mixin_name
+      page.extend(load_mixin!(mixin_name))
+      raise MixinNotValidError, "Page did not have #{mixin_name} at #{page.url}" unless page.valid?
     end
 
   end

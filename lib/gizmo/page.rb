@@ -4,6 +4,10 @@ module Gizmo
 
     attr_reader :mixins, :url, :document
 
+    def extended_with base
+      @mixins << base
+    end
+
     def initialize driver, content, url
       @mixins = []
       @browser = driver

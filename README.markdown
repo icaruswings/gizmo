@@ -24,6 +24,10 @@ see [this gist](http://gist.github.com/339570) for some code examples
 
 * write your features just like you usually would
 * require 'gizmo' and add the Gizmo::Helpers to the World
+
+    require 'gizmo'
+    World(Gizmo::Helpers)
+
 * generate your page mixins and fill them out with your page selectors
 * use the page model when writing your steps
 

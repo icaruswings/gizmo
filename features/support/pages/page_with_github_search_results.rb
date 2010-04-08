@@ -26,9 +26,9 @@ module PageWithGithubSearchResults
     element_struct do |repo_result|
       repo_result.title = result.css('h2.title')
       repo_result.link = repo_result.title.css('a')
-      link_parts = repo_result.link.inner_text.split('/')
-      repo_result.name = link_parts[1].strip
-      repo_result.author = link_parts[0].strip
+      link_parts = repo_result.link.inner_text.split('/').map(&:strip)
+      repo_result.author = link_parts[0]
+      repo_result.name = link_parts[1]
     end
   end
 

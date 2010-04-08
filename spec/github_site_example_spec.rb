@@ -1,9 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-# Dir[File.dirname(__FILE__) + '/../features/support/pages/*'].each do |path|
-#   require path if path =~ /page_with.+\.rb$/
-# end
-
 require 'capybara'
 require 'capybara/dsl'
 require File.expand_path(File.dirname(__FILE__) + '/../features/support/patches/capybara')

@@ -29,6 +29,14 @@ module Gizmo
       @document.css(css_selector).length > 0
     end
 
+    private
+
+    def element_struct
+      open_struct = OpenStruct.new
+      yield open_struct if block_given?
+      open_struct
+    end
+
   end
 
 end

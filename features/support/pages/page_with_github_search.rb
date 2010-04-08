@@ -3,9 +3,9 @@ module PageWithGithubSearch
   def valid?
     has_selector?("div.search")
   end
-    
+
   def search_form
-    OpenStruct do |form|
+    element_struct do |form|
       form.container = @document.css("div.search")
       form.element = container = form.container.css("form")
       form.input = container.css("input[name=q]")

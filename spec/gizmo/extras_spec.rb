@@ -4,12 +4,8 @@ describe "Gizmo" do
 
   describe "Extras" do
 
-    it "should provide an override for OpenStruct to make it yield to a block" do
-      OpenStruct { |o| o.should be_an OpenStruct }
-    end
-
-    it "should return an OpenStruct if not given a block" do
-      send(:OpenStruct).should be_an OpenStruct
+    it "should override #extended in the base Module class" do
+      Module.new.should respond_to :extended
     end
 
   end

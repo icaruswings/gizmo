@@ -17,8 +17,8 @@ Spec::Runner.configure do |config|
 
 end
 
-module PageWithMyOpenstruct
-  def my_openstruct; OpenStruct; end
+module PageWithMyElementStruct
+  def my_element_struct; element_struct; end
 end
 
 module PageWithMyMixin

@@ -18,25 +18,14 @@ So we've gone back to the drawing board and come up with a friendlier, cuddlier 
 
 ## Usage ##
 
-see [this gist](http://gist.github.com/339570) for some code examples
+**Cucumber:**
 
-**for cucumber:**
-
-* write your features just like you usually would
-* require 'gizmo' and add the Gizmo::Helpers to the World
-
-    require 'gizmo'
-    World(Gizmo::Helpers)
-
-* generate your page mixins and fill them out with your page selectors
-* use the page model when writing your steps
+To use Gizmo with Cucumber, see [the Cucumber wiki entry](http://wiki.github.com/icaruswings/gizmo/cucumber)
 
 
-**for rspec:**
+**RSpec:**
 
-* require 'gizmo' in your spec_helper and include Gizmo::Helpers methods
-* generate your page mixins and fill them out with your page selectors
-* use the page model when writing your specs
+To use Gizmo with RSpec, see [the RSpec wiki entry](http://wiki.github.com/icaruswings/gizmo/rspec)
 
 
 ## Contributing ##
@@ -49,4 +38,5 @@ see [this gist](http://gist.github.com/339570) for some code examples
 * Send me a pull request.
 
 ## Sponsored by ##
+
 [realestate.com.au](http://www.realestate.com.au)

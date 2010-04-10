@@ -9,25 +9,25 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Luke Cunningham", "Steven Holloway", "Sam Weller"]
-  s.date = %q{2010-04-08}
+  s.date = %q{2010-04-10}
   s.default_executable = %q{gizmo}
   s.description = %q{gizmo is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
   s.email = %q{luke@icaruswings.com}
   s.executables = ["gizmo"]
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.md"
+     "README.markdown"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README.md",
+     "README.markdown",
      "Rakefile",
      "VERSION",
      "bin/gizmo",
-     "features/gizmo.feature",
-     "features/step_definitions/gizmo_steps.rb",
+     "features/github_example.feature",
+     "features/step_definitions/github_example_steps.rb",
      "features/support/env.rb",
      "features/support/pages/page_with_github_repo_details.rb",
      "features/support/pages/page_with_github_search.rb",
@@ -72,6 +72,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<cucumber>, [">= 0.6.3"])
       s.add_development_dependency(%q<webrat>, [">= 0.7.0"])
       s.add_development_dependency(%q<capybara>, [">= 0.3.5"])
+      s.add_development_dependency(%q<metric_fu>, [">= 1.3.0"])
       s.add_runtime_dependency(%q<nokogiri>, [">= 1.4.1"])
       s.add_runtime_dependency(%q<activesupport>, [">= 2.3.5"])
     else
@@ -79,6 +80,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<cucumber>, [">= 0.6.3"])
       s.add_dependency(%q<webrat>, [">= 0.7.0"])
       s.add_dependency(%q<capybara>, [">= 0.3.5"])
+      s.add_dependency(%q<metric_fu>, [">= 1.3.0"])
       s.add_dependency(%q<nokogiri>, [">= 1.4.1"])
       s.add_dependency(%q<activesupport>, [">= 2.3.5"])
     end
@@ -87,6 +89,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<cucumber>, [">= 0.6.3"])
     s.add_dependency(%q<webrat>, [">= 0.7.0"])
     s.add_dependency(%q<capybara>, [">= 0.3.5"])
+    s.add_dependency(%q<metric_fu>, [">= 1.3.0"])
     s.add_dependency(%q<nokogiri>, [">= 1.4.1"])
     s.add_dependency(%q<activesupport>, [">= 2.3.5"])
   end

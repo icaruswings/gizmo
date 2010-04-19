@@ -14,10 +14,23 @@ So, we've gone back to the drawing board and come up with a friendlier, cuddlier
 **Gizmo** is a simple page model testing framework used and sponsored by [realestate.com.au](http://www.realestate.com.au). The aim of the project is to DRY up testing assertions by abstracting code that defines your page, resulting in a consistent, easy to maintain test suite. The code is maintained by Contributors from REA, and largely based on concepts brought to REA by [Mark Ryall](http://github.com/markryall) and other [thoughtworkers](http://thoughtworks.com.au/)
 
 
+Install
+------------
+
+    sudo gem install gizmo
+
+
 Usage
 ------------
 * [with Cucumber](http://wiki.github.com/icaruswings/gizmo/cucumber)
 * [with RSpec](http://wiki.github.com/icaruswings/gizmo/rspec)
+
+
+Development
+------------
+* Source hosted at [Github](http://github.com/icaruswings/gizmo).
+* Please direct questions, discussions at the [mailing list](http://groups.google.com/group/gizmo-gem).
+* Report issues in the [Github issue tracker](http://github.com/icaruswings/gizmo/issues)
 
 
 Contributing

@@ -21,8 +21,6 @@ module Gizmo
 
     private
 
-    
-
     def load_mixin! mixin_name
       begin
         mixin_dir = Gizmo.configuration.mixin_dir

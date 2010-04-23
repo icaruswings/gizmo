@@ -29,12 +29,24 @@ module Gizmo
       @document.css(css_selector).length > 0
     end
 
-    private
+    def perform action_name, *params
+      self.send("#{action_name.to_s}_action", *params)
+    end
 
+    def method_missing name, *args
+      method_name = name.to_sym
+      @browser.send(method_name, *args) if @browser.respond_to?(method_name)
+    end
+
+    private
     def element_struct
       open_struct = OpenStruct.new
       yield open_struct if block_given?
       open_struct
+    end
+
+    def define_action action_name, &block
+      self.class.send(:define_method, "#{action_name.to_s}_action".to_sym, &block)
     end
 
   end

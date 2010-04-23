@@ -20,7 +20,8 @@ end
 
 Then /^the user is on a github repository details page$/ do
   on_page_with :github_repo_details do |page|
-    page.should be_valid
+    # page.should be_valid
+    page.perform :login, 'email', 'password'
   end
 end
 

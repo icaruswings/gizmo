@@ -25,7 +25,7 @@ describe "Github" do
 
     it "should have a text input which accepts a search query" do
       on_page_with :github_search do |page|
-        fill_in page.search_form.input.attr('name').value, :with => 'gizmo'
+        page.perform :search, 'gizmo'
       end
     end
 

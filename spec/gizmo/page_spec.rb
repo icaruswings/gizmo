@@ -48,11 +48,13 @@ describe "Gizmo" do
         end
       end
 
+
       describe "@url" do
         it "should return the expected string" do
           @page.instance_variable_get(:@url).should == "http://www.example.com"
         end
       end
+
 
       describe "@mixins" do
         it "should be accessible with .mixins" do
@@ -96,18 +98,41 @@ describe "Gizmo" do
 
     end
 
-    describe "#extended_with" do
 
+    describe "#extended_with" do
       it "should add the mixin name to the Page's @mixin instance attribute" do
         on_page_with(:my_mixin, :my_other_mixin) do |page|
           [:my_mixin, :my_other_mixin].each { |m| page.mixins.should include Object.const_get("PageWith#{m.to_s.camelize}") }
         end
       end
+    end
 
+
+    describe "#define_action" do
+
+      it "should be a private method" do
+        @page.should_not respond_to :define_action
+      end
+
+      it "should define a new action within page" do
+        @page.send(:define_action, :tell) { |message| message }
+        @page.should respond_to :tell_action
+      end
+    end
+
+
+    it "should provide a :perform method" do
+      @page.should respond_to :perform
+    end
+
+    describe "#perform" do
+      it "should call a defined action" do
+        @page.send(:define_action, :tell) { |message| message }
+        @page.perform(:tell, "hello world").should == "hello world"
+      end
     end
 
     describe "#has_selector?" do
-
       it "should return true if @document contains one or more elements matching the selector" do
         @page.has_selector?('p.one_of_these').should be_true
         @page.has_selector?('p.two_of_these').should be_true
@@ -116,11 +141,10 @@ describe "Gizmo" do
       it "should return false if @document does not contain one or more elements matching the selector" do
         @page.has_selector?('p.does_not_exist').should be_false
       end
-
     end
 
-    describe "#element_struct" do
 
+    describe "#element_struct" do
       it "should provide an override for OpenStruct to make it yield to a block" do
         @page.send(:element_struct) { |o| o.should be_an OpenStruct }
       end
@@ -128,7 +152,6 @@ describe "Gizmo" do
       it "should return an OpenStruct if not given a block" do
         @page.send(:element_struct).should be_an OpenStruct
       end
-
     end
 
   end

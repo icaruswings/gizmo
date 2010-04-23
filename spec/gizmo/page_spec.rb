@@ -108,29 +108,28 @@ describe "Gizmo" do
     end
 
 
-    describe "#define_action" do
+    # describe "#define_action" do
+    #
+    #   it "should be a private method" do
+    #     @page.should_not respond_to :define_action
+    #   end
+    #
+    #   it "should define a new action within page" do
+    #     @page.send(:define_action, :tell) { |message| message }
+    #     @page.should respond_to :tell_action
+    #   end
+    # end
 
-      it "should be a private method" do
-        @page.should_not respond_to :define_action
-      end
-
-      it "should define a new action within page" do
-        @page.send(:define_action, :tell) { |message| message }
-        @page.should respond_to :tell_action
-      end
-    end
-
-
-    it "should provide a :perform method" do
-      @page.should respond_to :perform
-    end
-
-    describe "#perform" do
-      it "should call a defined action" do
-        @page.send(:define_action, :tell) { |message| message }
-        @page.perform(:tell, "hello world").should == "hello world"
-      end
-    end
+    # it "should provide a :perform method" do
+    #   @page.should respond_to :perform
+    # end
+    # 
+    # describe "#perform" do
+    #   it "should call a defined action" do
+    #     @page.send(:define_action, :tell) { |message| message }
+    #     @page.perform(:tell, "hello world").should == "hello world"
+    #   end
+    # end
 
     describe "#has_selector?" do
       it "should return true if @document contains one or more elements matching the selector" do

@@ -14,7 +14,7 @@ module PageWithGithubSearch
   end
 
   define_action :search do |query|
-    fill_in search_form.input.attr('name').value, :with => query
+    @browser.fill_in search_form.input.attr('name').value, :with => query
   end
 
 end

@@ -7,7 +7,7 @@ require 'spec/autorun'
 begin require 'redgreen' unless ENV['TM_CURRENT_LINE']; rescue LoadError; end
 
 Spec::Runner.configure do |config|
-  include Gizmo::Helpers
+  config.include Gizmo::Helpers
 
   config.before do
     Gizmo.configure do |config|

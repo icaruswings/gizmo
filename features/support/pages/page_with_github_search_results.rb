@@ -1,9 +1,10 @@
 module PageWithGithubSearchResults
 
+  include Gizmo::PageMixin
+
   def valid?
     has_selector?('div#code_search_results')
   end
-
 
   def search_results
     element_struct do |results|

@@ -1,5 +1,7 @@
 module PageWithGithubRepoDetails
 
+  include Gizmo::PageMixin
+
   def valid?
     has_selector?("div.repohead")
   end

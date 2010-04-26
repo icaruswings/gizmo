@@ -8,6 +8,7 @@ module Gizmo
 
   autoload :Page,       "gizmo/page"
   autoload :Helpers,    "gizmo/helpers"
+  autoload :PageMixin,  "gizmo/page_mixin"
 
   GizmoError = Class.new(StandardError)
   MixinNotValidError = Class.new(GizmoError)
@@ -17,4 +18,3 @@ module Gizmo
 end
 
 require "gizmo/configuration"
-require "gizmo/extras"

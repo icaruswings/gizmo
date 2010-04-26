@@ -21,18 +21,10 @@ describe "Gizmo" do
         @response ||= mock('response', :body => mock_response)
       end
 
-      def current_url
-        'http://www.example.com'
-      end
-
-      @page = Gizmo::Page.new(self, response.body, current_url)
+      @page = Gizmo::Page.new(self, response.body, 'http://www.example.com')
     end
 
     describe "attributes and accessors" do
-
-      it "should have an instance variable @mixins" do
-        @page.instance_variable_get(:@mixins).should_not be_nil
-      end
 
       it "should have an instance variable @document" do
         @page.instance_variable_get(:@document).should_not be_nil
@@ -55,31 +47,6 @@ describe "Gizmo" do
         end
       end
 
-
-      describe "@mixins" do
-        it "should be accessible with .mixins" do
-          @page.mixins.should equal @page.instance_variable_get(:@mixins)
-        end
-
-        it "should return an array" do
-          @page.mixins.should be_an(Array)
-        end
-
-        it "should be writable using instance_variable_set" do
-          mixins = @page.mixins << :new_mixin
-          @page.instance_variable_set :@mixins, mixins
-          @page.mixins.should include :new_mixin
-        end
-      end
-
-      it "should have an attribute reader for @mixins" do
-        @page.should respond_to(:mixins)
-      end
-
-      it "should not have an attribute writer for @mixins" do
-        @page.should_not respond_to(:mixins=)
-      end
-
       it "should have an attribute reader for @url" do
         @page.should respond_to(:url)
       end
@@ -98,38 +65,20 @@ describe "Gizmo" do
 
     end
 
-
-    describe "#extended_with" do
-      it "should add the mixin name to the Page's @mixin instance attribute" do
-        on_page_with(:my_mixin, :my_other_mixin) do |page|
-          [:my_mixin, :my_other_mixin].each { |m| page.mixins.should include Object.const_get("PageWith#{m.to_s.camelize}") }
-        end
-      end
+    it "should have a #perform method" do
+      @page.should respond_to :perform
     end
 
+    describe "delegate session methods to @browser" do
+      it "should be a private method" do
+        @page.should_not respond_to :click_link
+      end
 
-    # describe "#define_action" do
-    #
-    #   it "should be a private method" do
-    #     @page.should_not respond_to :define_action
-    #   end
-    #
-    #   it "should define a new action within page" do
-    #     @page.send(:define_action, :tell) { |message| message }
-    #     @page.should respond_to :tell_action
-    #   end
-    # end
-
-    # it "should provide a :perform method" do
-    #   @page.should respond_to :perform
-    # end
-    # 
-    # describe "#perform" do
-    #   it "should call a defined action" do
-    #     @page.send(:define_action, :tell) { |message| message }
-    #     @page.perform(:tell, "hello world").should == "hello world"
-    #   end
-    # end
+      it "should define a new action within page" do
+        @page.send(:define_action, :tell) { |message| message }
+        @page.should respond_to :tell_action
+      end
+    end
 
     describe "#has_selector?" do
       it "should return true if @document contains one or more elements matching the selector" do

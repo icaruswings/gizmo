@@ -63,6 +63,10 @@ describe "Gizmo" do
         @page.should_not respond_to(:document=)
       end
 
+      it "should have a private attribute reader for browser" do
+        @page.private_methods.should include "browser"
+      end
+
     end
 
     it "should have a #perform method" do

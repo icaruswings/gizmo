@@ -32,11 +32,14 @@ module Gizmo
 
     def method_missing name, *args
       method_name = name.to_sym
-      return super unless @browser.respond_to?(method_name)
-      @browser.send(method_name, *args)
+      return super unless browser.respond_to?(method_name)
+      browser.send(method_name, *args)
     end
 
     private
+
+    def browser; @browser; end
+
     def define_action action_name, &block
       self.class.send(:define_method, "#{action_name.to_s}_action".to_sym, &block)
     end

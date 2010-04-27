@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gizmo}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Luke Cunningham", "Steven Holloway", "Sam Weller"]
-  s.date = %q{2010-04-10}
+  s.date = %q{2010-04-27}
   s.default_executable = %q{gizmo}
   s.description = %q{gizmo is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
   s.email = %q{luke@icaruswings.com}
@@ -36,13 +36,13 @@ Gem::Specification.new do |s|
      "gizmo.gemspec",
      "lib/gizmo.rb",
      "lib/gizmo/configuration.rb",
-     "lib/gizmo/extras.rb",
      "lib/gizmo/helpers.rb",
      "lib/gizmo/page.rb",
+     "lib/gizmo/page_mixin.rb",
      "spec/github_site_example_spec.rb",
      "spec/gizmo/configuration_spec.rb",
-     "spec/gizmo/extras_spec.rb",
      "spec/gizmo/helpers_spec.rb",
+     "spec/gizmo/page_mixin_spec.rb",
      "spec/gizmo/page_spec.rb",
      "spec/pages/page_with_test_mixin_stuff.rb",
      "spec/spec.opts",
@@ -56,8 +56,8 @@ Gem::Specification.new do |s|
   s.test_files = [
     "spec/github_site_example_spec.rb",
      "spec/gizmo/configuration_spec.rb",
-     "spec/gizmo/extras_spec.rb",
      "spec/gizmo/helpers_spec.rb",
+     "spec/gizmo/page_mixin_spec.rb",
      "spec/gizmo/page_spec.rb",
      "spec/pages/page_with_test_mixin_stuff.rb",
      "spec/spec_helper.rb"

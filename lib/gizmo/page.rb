@@ -2,7 +2,7 @@ module Gizmo
 
   class Page
 
-    attr_reader :mixins, :url, :document
+    attr_reader :url, :document
 
     def initialize driver, content, url
       @browser = driver

@@ -4,8 +4,6 @@ end
 
 When /^the user enters "([^\"]*)" into the search box and clicks the magnifying glass icon$/ do |query|
   on_page_with :github_search do |page|
-    # fill_in page.search_form.input.attr('name').value, :with => text
-    # click page.search_form.submit.attr('alt').value
     page.perform :search, query
   end
 end

@@ -77,7 +77,7 @@ describe "Gizmo" do
       end
 
       it "should raise Gizmo::MixinNotFoundError if the mixin file cannot be loaded from the mixin_path" do
-        lambda { on_page_with :my_non_existent_mixin }.should raise_error(Gizmo::MixinNotFoundError, "Expected a page mixin file at #{Gizmo.configuration.mixin_dir}/page_with_my_non_existent_mixin.rb generate one with `gizmo -g my_non_existent_mixin`")
+        lambda { on_page_with :my_non_existent_mixin }.should raise_error(Gizmo::MixinNotFoundError)
       end
 
       it "should yield a page object to a block if supplied" do

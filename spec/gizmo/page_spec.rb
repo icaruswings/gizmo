@@ -66,6 +66,19 @@ describe "Gizmo" do
       it "should have a private attribute reader for browser" do
         @page.private_methods.should include "browser"
       end
+      
+      describe "document" do
+      
+        it "should return response.body" do
+          @page.document.to_s.should == Nokogiri::HTML(response.body).to_s
+        end
+
+        it "should return the latest response.body if it has been updated" do
+          response.stub(:body).and_return('new_body')
+          @page.document.to_s.should == Nokogiri::HTML('new_body').to_s
+        end
+      
+      end
 
     end
 
@@ -95,23 +108,18 @@ describe "Gizmo" do
       end
     end
     
-    # describe "#reponse_changed?" do
-    #   
-    #   it "should return false if the response.body has not changed" do
-    #     response.stub(:body).and_return('new_body')
-    #     @page.instance_variable_set(:@url, 'new_body')
-    #     
-    #     @page.send(:response_changed?).should be_false
-    #   end
-    #   
-    #   it "should return true if the response.body does not equal the currently set #document" do
-    #     response.stub(:body).and_return('new_body')
-    #     @page.instance_variable_set(:@url, 'old_body')
-    #     
-    #     @page.send(:response_changed?).should be_true
-    #   end
-    # 
-    # end
+    describe "#reponse_changed?" do
+      
+      it "should return false if the response.body has not changed" do
+        @page.send(:response_changed?).should be_false
+      end
+      
+      it "should return true if the response.body does not equal the currently set #document" do
+        response.stub(:body).and_return('new_body')
+        @page.send(:response_changed?).should be_true
+      end
+    
+    end
 
 
     describe "#element_struct" do

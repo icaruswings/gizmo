@@ -2,12 +2,12 @@ module Gizmo
 
   class Page
 
-    attr_reader :url, :document
+    attr_reader :url
 
     def initialize driver, content, url
       @browser = driver
-      @document = Nokogiri::HTML(content)
       @url = url
+      set_document_with content
     end
 
     # Pages are valid by default -
@@ -21,7 +21,7 @@ module Gizmo
     def valid?; true; end
 
     def has_selector? css_selector
-      @document.css(css_selector).length > 0
+      document.css(css_selector).length > 0
     end
 
     def perform action_name, *params
@@ -36,7 +36,21 @@ module Gizmo
       browser.send(method_name, *args)
     end
 
+    def document
+      return set_document_with(response.body) if response_changed?
+      @document
+    end
+
     private
+
+    def set_document_with content
+      @raw_content = content
+      @document = Nokogiri::HTML(content)
+    end
+
+    def response_changed?
+      @raw_content != response.body
+    end
 
     def browser; @browser; end
 

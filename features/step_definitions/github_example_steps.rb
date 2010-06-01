@@ -12,7 +12,7 @@ When /^the user clicks on the "([^\"]*)" link$/ do |text|
   click_link text
 end
 
-Then /^the user is on a github repository details page$/ do
+Then /^the user is on a github repository details page$/ do |page|
   on_page_with :github_repo_details do |page|
     page.should be_valid
   end

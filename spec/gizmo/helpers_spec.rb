@@ -4,7 +4,7 @@ describe "Gizmo" do
 
   describe "Helpers" do
 
-    before do
+    before do      
       def response
         body = <<-eos
           <html>

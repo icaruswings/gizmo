@@ -5,7 +5,7 @@ require 'spec/expectations'
 #CAPYBARA
 require 'capybara/cucumber'
 require 'capybara/session'
-require 'features/support/patches/capybara'
+# require 'features/support/patches/capybara'
 Capybara.default_driver = :selenium
 Capybara.run_server = false
 

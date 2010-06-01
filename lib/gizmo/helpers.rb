@@ -29,16 +29,21 @@ module Gizmo
         require (mixin || "#{mixin_dir}/page_with_#{mixin_name}.rb") unless Object.const_defined?(const_name)
         Object.const_get(const_name)
       rescue LoadError
-        raise MixinNotFoundError, error_body = <<-EOS
-          There was no page_with_#{mixin_name} file!!
-          You can create a file at - #{mixin_dir}/page_with_#{mixin_name}.rb
-          and copy the mixin code below into it
+        raise MixinNotFoundError, error_body = <<EOS
 
-          #-------------------------------------
+-------------------------------------------------
+!!! There was no page_with_#{mixin_name} file !!!
+-------------------------------------------------
+You can create a new file at:
+#{mixin_dir}/page_with_#{mixin_name}.rb
 
-          #{Gizmo::Templates::PageMixin.render(self, :const_name => const_name, :mixin_name => mixin_name)}
+then just copy the mixin code below into it
+and you'll be ready to gizmo!
+------------------------------------------------
 
-        EOS
+#{Gizmo::Templates::PageMixin.render(self, :const_name => const_name, :mixin_name => mixin_name)}
+
+EOS
       end
     end
 

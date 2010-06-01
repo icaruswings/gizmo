@@ -2,6 +2,7 @@ require 'rubygems'
 require 'active_support'
 require 'nokogiri'
 require 'tilt'
+require 'term/ansicolor'
 
 $LOAD_PATH << File.dirname(__FILE__)
 

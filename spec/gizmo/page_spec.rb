@@ -98,14 +98,14 @@ describe "Gizmo" do
     # describe "#reponse_changed?" do
     #   
     #   it "should return false if the response.body has not changed" do
-    #     @response.stub(:body).and_return('new_body')
+    #     response.stub(:body).and_return('new_body')
     #     @page.instance_variable_set(:@url, 'new_body')
     #     
     #     @page.send(:response_changed?).should be_false
     #   end
     #   
     #   it "should return true if the response.body does not equal the currently set #document" do
-    #     @response.stub(:body).and_return('new_body')
+    #     response.stub(:body).and_return('new_body')
     #     @page.instance_variable_set(:@url, 'old_body')
     #     
     #     @page.send(:response_changed?).should be_true

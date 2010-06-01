@@ -6,7 +6,7 @@ describe "Gizmo" do
 
     before do
       def response
-        mock_response = <<-eos
+        body = <<-eos
           <html>
             <head>
               <title>my awesome web page</title>
@@ -18,7 +18,7 @@ describe "Gizmo" do
             </body>
           </html>
         eos
-        @response ||= mock('response', :body => mock_response)
+        @response ||= mock('response', :body => body)
       end
 
       def current_url
@@ -77,7 +77,7 @@ describe "Gizmo" do
       end
 
       it "should raise Gizmo::MixinNotFoundError if the mixin file cannot be loaded from the mixin_path" do
-        lambda { on_page_with :my_non_existent_mixin }.should raise_error(Gizmo::MixinNotFoundError)
+        lambda { on_page_with :my_non_existent_mixin }.should raise_error(Gizmo::MixinNotFoundError, /#{ Gizmo::Templates::PageMixin.render(self, { :const_name => "PageWithMyNonExistentMixin", :mixin_name => "page_with_my_non_existent_mixin" }) }/)
       end
 
       it "should yield a page object to a block if supplied" do

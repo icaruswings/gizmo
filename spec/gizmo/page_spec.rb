@@ -6,7 +6,7 @@ describe "Gizmo" do
 
     before do
       def response
-        mock_response = <<-eos
+        body = <<-eos
           <html>
             <head>
               <title>my awesome web page</title>
@@ -18,7 +18,7 @@ describe "Gizmo" do
             </body>
           </html>
         eos
-        @response ||= mock('response', :body => mock_response)
+        @response ||= mock('response', :body => body)
       end
 
       @page = Gizmo::Page.new(self, response.body, 'http://www.example.com')
@@ -94,6 +94,24 @@ describe "Gizmo" do
         @page.has_selector?('p.does_not_exist').should be_false
       end
     end
+    
+    # describe "#reponse_changed?" do
+    #   
+    #   it "should return false if the response.body has not changed" do
+    #     @response.stub(:body).and_return('new_body')
+    #     @page.instance_variable_set(:@url, 'new_body')
+    #     
+    #     @page.send(:response_changed?).should be_false
+    #   end
+    #   
+    #   it "should return true if the response.body does not equal the currently set #document" do
+    #     @response.stub(:body).and_return('new_body')
+    #     @page.instance_variable_set(:@url, 'old_body')
+    #     
+    #     @page.send(:response_changed?).should be_true
+    #   end
+    # 
+    # end
 
 
     describe "#element_struct" do

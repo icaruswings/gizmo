@@ -15,9 +15,27 @@ module PageWithGithubSearch
     end
   end
 
+  define_action :enter_search_query do |query|
+    # #set is capybaras method for setting a value for an element
+    locate(search_form.input).set(query)
+  end
+
+  define_action :click_element do |element|
+    locate(element).click
+  end
+
   define_action :search do |query|
-    fill_in search_form.input.attr('name').value, :with => query
-    click search_form.submit.attr('alt').value
+    perform :enter_search_query, query
+    perform :click_element, search_form.submit
+  end
+
+  private
+
+  def locate nokogiri_element
+    # turn a nokogiri element into a capybara element
+    # so we can use capybara's api to perform actions
+    node = nokogiri_element.is_a?(Nokogiri::XML::NodeSet) ? nokogiri_element.first : nokogiri_element
+    find(:xpath, node.path)
   end
 
 end

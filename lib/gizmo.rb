@@ -18,10 +18,6 @@ module Gizmo
   MixinNotFoundError = Class.new(GizmoError)
   NilResponseError = Class.new(GizmoError)
 
-  def self.resp
-    Object.const_defined?(:Capybara) ? :page : :response
-  end
-
 end
 
 require "gizmo/configuration"

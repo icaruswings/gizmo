@@ -25,7 +25,8 @@ module Gizmo
       begin
         mixin_dir = Gizmo.configuration.mixin_dir
         const_name = "PageWith#{mixin_name.to_s.camelize}"
-        require "#{mixin_dir}/page_with_#{mixin_name}.rb" unless Object.const_defined?(const_name)
+        mixin = Dir["#{mixin_dir}/**/page_with_#{mixin_name}.rb"].first
+        require (mixin || "#{mixin_dir}/page_with_#{mixin_name}.rb") unless Object.const_defined?(const_name)
         Object.const_get(const_name)
       rescue LoadError
         raise MixinNotFoundError, "Expected a page mixin file at #{mixin_dir}/page_with_#{mixin_name}.rb generate one with `gizmo -g #{mixin_name}`"

@@ -35,7 +35,21 @@ module Gizmo
 
     def add_mixin_to_page page, mixin_name
       page.extend(load_mixin!(mixin_name))
-      raise MixinNotValidError, "Page did not have #{mixin_name} at #{page.url}" unless page.valid?
+      raise MixinNotFoundError, error_body = <<EOS
+
+-------------------------------------------------
+!!! There was no page_with_#{mixin_name} file !!!
+-------------------------------------------------
+You can create a new file at:
+#{mixin_dir}/page_with_#{mixin_name}.rb
+
+then just copy the mixin code below into it
+and you'll be ready to gizmo!
+------------------------------------------------
+
+#{Gizmo::Templates::PageMixin.render(self, :const_name => const_name, :mixin_name => mixin_name)}
+
+EOS
     end
 
   end

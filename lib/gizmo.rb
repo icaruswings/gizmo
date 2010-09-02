@@ -1,5 +1,7 @@
 require 'rubygems'
+
 require 'active_support'
+
 require 'nokogiri'
 require 'tilt'
 require 'term/ansicolor'

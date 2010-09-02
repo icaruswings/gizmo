@@ -3,13 +3,13 @@ module PageWithGithubSearch
   include Gizmo::PageMixin
 
   def valid?
-    has_selector?("div.search")
+    has_selector?("form[action='/search']")
   end
 
   def search_form
     element_struct do |form|
-      form.container = @document.css("div.search")
-      form.element = container= form.container.css("form")
+      form.container = @document.css("form[action='/search']")
+      form.element = container = form.container
       form.input = container.css("input[name=q]")
       form.submit = container.css("input[alt=search]")
     end
@@ -24,9 +24,14 @@ module PageWithGithubSearch
     locate(element).click
   end
   
+  define_action :submit_form do
+    evaluate_script("document.forms[0].submit()")
+  end
+  
   define_action :search do |query|
     perform :enter_search_query, query
-    perform :click_element, search_form.submit
+    # perform :click_element, search_form.submit
+    perform :submit_form
   end
   
   private

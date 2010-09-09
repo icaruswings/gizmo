@@ -9,7 +9,7 @@ begin
     gem.description = %Q{gizmo is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
     gem.email = "luke@icaruswings.com"
     gem.homepage = "http://github.com/icaruswings/gizmo"
-    gem.authors = ["Luke Cunningham", "Steven Holloway", "Sam Weller"]
+    gem.authors = ["Luke Cunningham"]
     gem.add_development_dependency "rspec", ">= 1.3.0"
     gem.add_development_dependency "cucumber", ">= 0.7.2"
     gem.add_development_dependency "webrat", ">= 0.7.0"

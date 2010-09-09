@@ -11,7 +11,17 @@ With which we were entrusted and asked to follow 3 simple rules...
 We didn't listen, and it got nasty...<br />
 So, we've gone back to the drawing board and come up with a friendlier, cuddlier testing helper.
 
-**Gizmo** is a simple page model testing framework used and sponsored by [realestate.com.au](http://www.realestate.com.au). The aim of the project is to DRY up testing assertions by abstracting code that defines your page, resulting in a consistent, easy to maintain test suite. The code is maintained by Contributors from REA, and largely based on concepts brought to REA by [Mark Ryall](http://github.com/markryall), [Perryn Fowler](http://github.com/perryn) and other [thoughtworkers](http://thoughtworks.com.au/)
+**Gizmo** is a simple page model testing framework used and sponsored by [realestate.com.au](http://www.realestate.com.au). The aim of the project is to DRY up testing assertions by abstracting code that defines your page, resulting in a consistent, easy to maintain test suite. 
+
+The project is mostly maintained by Contributors from REA.
+
+Code was stolen from:
+------------
+* [Steven Holloway](http://github.com/impurist)
+* [Sam Weller](http://github.com/samweller)
+* [Mark Ryall](http://github.com/markryall)
+* [Mike Bain](http://github.com/Nolf)
+* [Perryn Fowler](http://github.com/perryn)
 
 
 Install

@@ -19,6 +19,7 @@ begin
     gem.add_dependency "nokogiri", ">= 1.4.1"
     gem.add_dependency "activesupport", "~> 2.3.5"
     gem.add_dependency "tilt", ">= 1.0.1"
+    gem.add_dependency "config_newton", ">= 0.1.1"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

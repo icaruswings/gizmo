@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Luke Cunningham"]
-  s.date = %q{2010-10-27}
+  s.date = %q{2010-11-01}
   s.default_executable = %q{gizmo}
   s.description = %q{gizmo is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
   s.email = %q{luke@icaruswings.com}
@@ -21,10 +21,13 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     "Gemfile",
+     "Gemfile.lock",
      "LICENSE",
      "README.markdown",
      "Rakefile",
      "VERSION",
+     "autotest/discover.rb",
      "bin/gizmo",
      "features/github_example.feature",
      "features/step_definitions/github_example_steps.rb",
@@ -47,7 +50,7 @@ Gem::Specification.new do |s|
      "spec/gizmo/page_mixin_spec.rb",
      "spec/gizmo/page_spec.rb",
      "spec/pages/page_with_test_mixin_stuff.rb",
-     "spec/spec.opts",
+     "spec/rspec.opts",
      "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/icaruswings/gizmo}
@@ -70,36 +73,39 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 1.3.0"])
-      s.add_development_dependency(%q<cucumber>, [">= 0.7.2"])
-      s.add_development_dependency(%q<webrat>, [">= 0.7.0"])
-      s.add_development_dependency(%q<capybara>, [">= 0.3.5"])
-      s.add_development_dependency(%q<metric_fu>, [">= 1.3.0"])
       s.add_runtime_dependency(%q<nokogiri>, [">= 1.4.1"])
       s.add_runtime_dependency(%q<activesupport>, ["~> 2.3.5"])
       s.add_runtime_dependency(%q<tilt>, [">= 1.0.1"])
       s.add_runtime_dependency(%q<config_newton>, [">= 0.1.1"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<rspec>, [">= 0"])
+      s.add_development_dependency(%q<autotest>, [">= 0"])
+      s.add_development_dependency(%q<cucumber>, [">= 0"])
+      s.add_development_dependency(%q<webrat>, [">= 0"])
+      s.add_development_dependency(%q<capybara>, [">= 0"])
     else
-      s.add_dependency(%q<rspec>, [">= 1.3.0"])
-      s.add_dependency(%q<cucumber>, [">= 0.7.2"])
-      s.add_dependency(%q<webrat>, [">= 0.7.0"])
-      s.add_dependency(%q<capybara>, [">= 0.3.5"])
-      s.add_dependency(%q<metric_fu>, [">= 1.3.0"])
       s.add_dependency(%q<nokogiri>, [">= 1.4.1"])
       s.add_dependency(%q<activesupport>, ["~> 2.3.5"])
       s.add_dependency(%q<tilt>, [">= 1.0.1"])
       s.add_dependency(%q<config_newton>, [">= 0.1.1"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<rspec>, [">= 0"])
+      s.add_dependency(%q<autotest>, [">= 0"])
+      s.add_dependency(%q<cucumber>, [">= 0"])
+      s.add_dependency(%q<webrat>, [">= 0"])
+      s.add_dependency(%q<capybara>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rspec>, [">= 1.3.0"])
-    s.add_dependency(%q<cucumber>, [">= 0.7.2"])
-    s.add_dependency(%q<webrat>, [">= 0.7.0"])
-    s.add_dependency(%q<capybara>, [">= 0.3.5"])
-    s.add_dependency(%q<metric_fu>, [">= 1.3.0"])
     s.add_dependency(%q<nokogiri>, [">= 1.4.1"])
     s.add_dependency(%q<activesupport>, ["~> 2.3.5"])
     s.add_dependency(%q<tilt>, [">= 1.0.1"])
     s.add_dependency(%q<config_newton>, [">= 0.1.1"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<rspec>, [">= 0"])
+    s.add_dependency(%q<autotest>, [">= 0"])
+    s.add_dependency(%q<cucumber>, [">= 0"])
+    s.add_dependency(%q<webrat>, [">= 0"])
+    s.add_dependency(%q<capybara>, [">= 0"])
   end
 end
 

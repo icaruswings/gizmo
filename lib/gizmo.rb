@@ -19,7 +19,6 @@ module Gizmo
   MixinNotValidError = Class.new(GizmoError)
   MixinNotFoundError = Class.new(GizmoError)
   NilResponseError = Class.new(GizmoError)
-
 end
 
 require "gizmo/configuration"

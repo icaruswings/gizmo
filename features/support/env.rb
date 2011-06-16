@@ -1,6 +1,8 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
 
-require 'spec/expectations'
+require 'rspec/expectations'
+require 'active_support/inflector'
+require 'ostruct'
 
 #CAPYBARA
 require 'capybara/cucumber'

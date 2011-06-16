@@ -5,7 +5,7 @@ describe "Gizmo" do
   describe "Helpers" do
 
     before do
-      def response
+      def body
         mock_response = <<-eos
           <html>
             <head>
@@ -48,7 +48,7 @@ describe "Gizmo" do
       end
 
       it "should raise an error if the response object is nil" do
-        response.stub!(:nil?).and_return(true)
+        body.stub!(:nil?).and_return(true)
         lambda { on_page { |page| page } }.should raise_error(Gizmo::NilResponseError, "Doh! response object is nil. This generally means your scenario has not yet visited a page!")
       end
 

@@ -2,7 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 require 'capybara'
 require 'capybara/dsl'
-require File.expand_path(File.dirname(__FILE__) + '/../features/support/patches/capybara')
 
 Capybara.default_driver = :selenium
 Capybara.run_server = false

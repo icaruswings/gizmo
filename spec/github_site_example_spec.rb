@@ -7,7 +7,7 @@ Capybara.default_driver = :selenium
 Capybara.run_server = false
 
 RSpec.configure do |config|
-  config.include Capybara
+  config.include Capybara::DSL
 end
 
 

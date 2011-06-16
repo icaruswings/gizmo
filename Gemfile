@@ -3,7 +3,7 @@ source :rubygems
 group :development do
   gem 'rspec'
   gem 'cucumber'
-  gem 'capybara', '0.4.1.2'
+  gem 'capybara'
   gem 'metric_fu'
   gem 'jeweler'
 

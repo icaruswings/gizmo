@@ -10,6 +10,7 @@ require 'capybara/session'
 
 # require 'features/support/patches/capybara'
 Capybara.default_driver = :selenium
+Capybara.default_selector= :css
 Capybara.run_server = false
 
 #gizmo!!!

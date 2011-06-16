@@ -8,7 +8,7 @@ module PageWithGithubSearch
 
   def search_form
     element_struct do |form|
-      form.container = @document.css("form[action='/search']")
+      form.container = document.css("form[action='/search']")
       form.element = container = form.container
       form.input = container.css("input[name=q]")
       form.submit = container.css("input[value=search]")

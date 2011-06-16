@@ -2,12 +2,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe "Gizmo" do
 
-  describe "Page" do
-
-    before do
-      def response
-        mock_response = <<-eos
-          <html>
+  class MockWorld
+    def body
+      '<html>
             <head>
               <title>my awesome web page</title>
             </head>
@@ -16,27 +13,35 @@ describe "Gizmo" do
               <p class="two_of_these">paragraph two</p>
               <p class="two_of_these">paragraph three</p>
             </body>
-          </html>
-        eos
-        @response ||= mock('response', :body => mock_response)
-      end
+          </html>'
+    end
+  end
 
-      @page = Gizmo::Page.new(self, response.body, 'http://www.example.com')
+  describe "Page" do
+
+    before do
+      @page = Gizmo::Page.new(MockWorld.new, 'http://www.example.com')
     end
 
     describe "attributes and accessors" do
 
-      it "should have an instance variable @document" do
-        @page.instance_variable_get(:@document).should_not be_nil
-      end
 
       it "should have an instance variable @url" do
         @page.instance_variable_get(:@url).should_not be_nil
       end
 
-      describe "@document" do
+      describe "document" do
+
+        it "should have have a document method" do
+          @page.methods.should include 'document'
+        end
+
+        it "should have get the responce with the document method" do
+          @page.document.should_not be_nil
+        end
+
         it "should be a Nokogiri::HTML document" do
-          @page.instance_variable_get(:@document).should be_a Nokogiri::HTML::Document
+          @page.document.should be_a Nokogiri::HTML::Document
         end
       end
 
@@ -53,14 +58,6 @@ describe "Gizmo" do
 
       it "should not have an attribute writer for @url" do
         @page.should_not respond_to(:url=)
-      end
-
-      it "should have attribute reader for @document" do
-        @page.should respond_to(:document)
-      end
-
-      it "should have attribute writer for @document" do
-        @page.should_not respond_to(:document=)
       end
 
       it "should have a private attribute reader for browser" do
@@ -85,12 +82,12 @@ describe "Gizmo" do
     end
 
     describe "#has_selector?" do
-      it "should return true if @document contains one or more elements matching the selector" do
+      it "should return true if document contains one or more elements matching the selector" do
         @page.has_selector?('p.one_of_these').should be_true
         @page.has_selector?('p.two_of_these').should be_true
       end
 
-      it "should return false if @document does not contain one or more elements matching the selector" do
+      it "should return false if document does not contain one or more elements matching the selector" do
         @page.has_selector?('p.does_not_exist').should be_false
       end
     end

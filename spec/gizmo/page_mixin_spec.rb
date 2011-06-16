@@ -7,7 +7,7 @@ describe "Gizmo" do
       include Gizmo::PageMixin
       define_action(:tell) { |message| message }
     end
-    @obj = Gizmo::Page.new({},'',{}).extend(MyModule)
+    @obj = Gizmo::Page.new({},{}).extend(MyModule)
   end
 
   describe "PageMixin" do

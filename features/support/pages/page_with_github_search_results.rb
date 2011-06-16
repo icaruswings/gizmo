@@ -34,7 +34,7 @@ module PageWithGithubSearchResults
   end
 
   def find_results_container heading_text
-    all_headings = @document.css('div.header')
+    all_headings = document.css('div.header')
     header = all_headings.find do |heading_element|
       heading_element.css('div.title').inner_text =~ /#{heading_text} \((.+)\)/
     end

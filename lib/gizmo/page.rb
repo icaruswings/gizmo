@@ -4,9 +4,14 @@ module Gizmo
 
     attr_reader :url, :document
 
-    def initialize driver, content, url
+#    def initialize driver, content, url
+#      @browser = driver
+#      @document = Nokogiri::HTML(content)
+#      @url = url
+#    end
+
+    def initialize driver, url
       @browser = driver
-      @document = Nokogiri::HTML(content)
       @url = url
     end
 
@@ -18,10 +23,16 @@ module Gizmo
     # def valid?
     #   has_selector?('some_element_selector')
     # end
-    def valid?; true; end
+    def valid?;
+      true;
+    end
+
+    def document
+      Nokogiri::HTML(@browser.body)
+    end
 
     def has_selector? css_selector
-      @document.css(css_selector).length > 0
+      document.css(css_selector).length > 0
     end
 
     def perform action_name, *params
@@ -38,7 +49,9 @@ module Gizmo
 
     private
 
-    def browser; @browser; end
+    def browser;
+      @browser;
+    end
 
     def define_action action_name, &block
       self.class.send(:define_method, "#{action_name.to_s}_action".to_sym, &block)

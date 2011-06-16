@@ -11,7 +11,7 @@ module PageWithGithubSearch
       form.container = @document.css("form[action='/search']")
       form.element = container = form.container
       form.input = container.css("input[name=q]")
-      form.submit = container.css("input[alt=search]")
+      form.submit = container.css("input[value=search]")
     end
   end
   

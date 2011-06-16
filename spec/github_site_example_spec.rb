@@ -32,7 +32,7 @@ describe "Github" do
 
     it "should perform a search when clicking the magnifying glass" do
       on_page_with :github_search do |page|
-        click_on page.search_form.submit.attr('alt').value
+        click page.search_form.submit.attr('alt').value
       end
     end
 

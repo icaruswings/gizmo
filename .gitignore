@@ -5,6 +5,9 @@
 *.tmproj
 tmtags
 
+## RUBYMINE
+.idea
+
 ## EMACS
 *~
 \#*
@@ -20,3 +23,5 @@ pkg
 
 ## PROJECT::SPECIFIC
 tmp
+.bundle/
+Gemfile.lock

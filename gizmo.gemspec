@@ -5,10 +5,10 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gizmo}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Luke Cunningham", "Steven Holloway", "Sam Weller"]
+  s.authors = ["Luke Cunningham", "Steven Holloway", "Mike Bain", "Steve Bearzatto"]
   s.date = %q{2010-09-02}
   s.default_executable = %q{gizmo}
   s.description = %q{gizmo is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}

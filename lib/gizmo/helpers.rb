@@ -1,3 +1,4 @@
+#require 'active_support/inflector'
 module Gizmo
 
   module Helpers

@@ -1,12 +1,14 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'gizmo'
 
-require 'spec'
-require 'spec/autorun'
+require 'rspec'
+require 'rspec/autorun'
+require 'active_support/inflector'
+require 'ostruct'
 
 begin require 'redgreen' unless ENV['TM_CURRENT_LINE']; rescue LoadError; end
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include Gizmo::Helpers
 
   config.before do

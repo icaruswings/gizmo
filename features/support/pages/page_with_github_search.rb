@@ -3,7 +3,7 @@ module PageWithGithubSearch
   include Gizmo::PageMixin
 
   def valid?
-    has_selector?("form[action='/search']")
+    has_selector? "form[action='/search']"
   end
 
 #  def search_form

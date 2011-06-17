@@ -4,12 +4,6 @@ module Gizmo
 
     attr_reader :url, :document
 
-#    def initialize driver, content, url
-#      @browser = driver
-#      @document = Nokogiri::HTML(content)
-#      @url = url
-#    end
-
     def initialize driver, url
       @browser = driver
       @url = url
@@ -25,14 +19,6 @@ module Gizmo
     # end
     def valid?;
       true;
-    end
-
-    def document
-      Nokogiri::HTML(@browser.body)
-    end
-
-    def has_selector? css_selector
-      document.css(css_selector).length > 0
     end
 
     def perform action_name, *params

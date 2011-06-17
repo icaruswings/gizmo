@@ -2,25 +2,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe "Gizmo" do
 
-  class MockWorld
-    def body
-      '<html>
-            <head>
-              <title>my awesome web page</title>
-            </head>
-            <body>
-              <p class="one_of_these">paragraph one</p>
-              <p class="two_of_these">paragraph two</p>
-              <p class="two_of_these">paragraph three</p>
-            </body>
-          </html>'
-    end
-  end
-
   describe "Page" do
 
     before do
-      @page = Gizmo::Page.new(MockWorld.new, 'http://www.example.com')
+      @page = Gizmo::Page.new(self, 'http://www.example.com')
     end
 
     describe "attributes and accessors" do

@@ -9,49 +9,52 @@ begin
     gem.description = %Q{gizmo is a simple page model testing framework used and sponsored by 'realestate.com.au'. The aim of the project is to DRY up your testing assertions by abstracting code that defines your page resulting in a consistent, easy to maintain test suit}
     gem.email = "luke@icaruswings.com"
     gem.homepage = "http://github.com/icaruswings/gizmo"
-    gem.authors = ["Luke Cunningham"]
-    gem.add_development_dependency "rspec", ">= 1.3.0"
-    gem.add_development_dependency "cucumber", ">= 0.7.2"
-    gem.add_development_dependency "webrat", ">= 0.7.0"
-    gem.add_development_dependency "capybara", ">= 0.3.5"
-    gem.add_development_dependency "metric_fu", ">= 1.3.0"
+    gem.authors = ["Luke Cunningham", "Mike Bain"]
+    gem.add_development_dependency "rspec", "~>2.6.0"
+    gem.add_development_dependency "cucumber", "~>0.10.7"
+    gem.add_development_dependency "metric_fu", "~>2.1.1"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-    gem.add_dependency "nokogiri", ">= 1.4.1"
-    gem.add_dependency "activesupport", "~> 2.3.5"
-    gem.add_dependency "tilt", ">= 1.0.1"
+    gem.add_dependency "capybara", "~>1.0.0"
+    gem.add_dependency "activesupport", "~>3.0.8"
+    gem.add_dependency "tilt", "~>1.3.2"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-require 'metric_fu'
+task :default => :spec
 
-require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new(:spec) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.spec_files = FileList['spec/**/*_spec.rb']
-end
-
-Spec::Rake::SpecTask.new(:rcov) do |spec|
-  spec.libs << 'lib/gizmo'
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
-  spec.rcov_opts = ['--failure-threshold', 100, '--exclude', 'features,.gems']
-end
-
-task :spec => :check_dependencies
-
-begin
-  require 'cucumber/rake/task'
-  Cucumber::Rake::Task.new(:features)
-
-task :features => :check_dependencies
-rescue LoadError
-  task :features do
-    abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
+desc 'Install required gems'
+task :bootstrap do
+  begin
+    sh 'command -v bundle >/dev/null'
+  rescue
+    puts "Installing bundler"
+    sh 'gem install bundler'
   end
+
+  puts "Installing gems"
+  sh 'bundle install'
 end
+
+
+require 'metric_fu'
+require 'rspec/core/rake_task'
+#task :spec => :check_dependencies
+
+RSpec::Core::RakeTask.new(:spec)
+
+RSpec::Core::RakeTask.new(:rcov) do |rspec|
+  rspec.rcov = true
+  rspec.rcov_opts = ['--failure-threshold', 100, '--exclude', 'features,.gems']
+end
+
+
+require 'cucumber/rake/task'
+Cucumber::Rake::Task.new(:features)
+
+task :features
 
 begin
   require 'reek/adapters/rake_task'
@@ -77,8 +80,6 @@ rescue LoadError
     abort "Roodi is not available. In order to run roodi, you must: sudo gem install roodi"
   end
 end
-
-task :default => :spec
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|

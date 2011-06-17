@@ -5,6 +5,9 @@ group :development do
   gem 'cucumber', '~>0.10.7'
   gem 'metric_fu', '~>2.1.1'
   gem 'jeweler', '~>1.6.2'
+  gem 'reek'
+  gem 'roodi'
+  gem 'rdoc'
 
 end
 

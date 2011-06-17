@@ -29,8 +29,8 @@ describe "Gizmo" do
         @page.should_not respond_to(:url=)
       end
 
-      it "should have a private attribute reader for browser" do
-        @page.private_methods.should include "browser"
+      it "should have a private attribute reader for world" do
+        @page.private_methods.should include "world"
       end
 
     end

@@ -4,8 +4,8 @@ module Gizmo
 
     attr_reader :url, :document
 
-    def initialize driver, url
-      @browser = driver
+    def initialize world, url
+      @world = world
       @url = url
     end
 
@@ -29,14 +29,14 @@ module Gizmo
 
     def method_missing name, *args
       method_name = name.to_sym
-      return super unless browser.respond_to?(method_name)
-      browser.send(method_name, *args)
+      return super unless world.respond_to?(method_name)
+      world.send(method_name, *args)
     end
 
     private
 
-    def browser;
-      @browser;
+    def world;
+      @world;
     end
 
     def define_action action_name, &block

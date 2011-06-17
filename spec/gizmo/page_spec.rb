@@ -30,22 +30,6 @@ describe "Gizmo" do
         @page.instance_variable_get(:@url).should_not be_nil
       end
 
-      describe "document" do
-
-        it "should have have a document method" do
-          @page.methods.should include 'document'
-        end
-
-        it "should have get the responce with the document method" do
-          @page.document.should_not be_nil
-        end
-
-        it "should be a Nokogiri::HTML document" do
-          @page.document.should be_a Nokogiri::HTML::Document
-        end
-      end
-
-
       describe "@url" do
         it "should return the expected string" do
           @page.instance_variable_get(:@url).should == "http://www.example.com"
@@ -80,18 +64,6 @@ describe "Gizmo" do
         @page.should respond_to :tell_action
       end
     end
-
-    describe "#has_selector?" do
-      it "should return true if document contains one or more elements matching the selector" do
-        @page.has_selector?('p.one_of_these').should be_true
-        @page.has_selector?('p.two_of_these').should be_true
-      end
-
-      it "should return false if document does not contain one or more elements matching the selector" do
-        @page.has_selector?('p.does_not_exist').should be_false
-      end
-    end
-
 
     describe "#element_struct" do
       it "should provide an override for OpenStruct to make it yield to a block" do

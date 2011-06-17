@@ -16,20 +16,18 @@ module PageWithGithubSearch
 #  end
 
   define_action :search do |query|
-    perform :enter_search_query, query
-    perform :submit_form
+    Capybara::within("form[action='/search']") do
+      fill_in 'q', :with => query
+
+      #most pages you need to submit the form to search
+      begin
+        click_on 'input[alt="search"]'
+      rescue Capybara::ElementNotFound
+        evaluate_script("document.forms[0].submit()")
+      end
+
+    end
   end
 
-  private
-
-  define_action :enter_search_query do |query|
-    fill_in 'q', :with => query
-  end
-
-
-  define_action :submit_form do
-    #clink_on 'input[alt="search"]'
-    evaluate_script("document.forms[0].submit()")
-  end
 
 end

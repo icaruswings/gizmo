@@ -25,13 +25,13 @@ describe "Github" do
 
     it "should have a text input which accepts a search query" do
       on_page_with :github_search do |page|
-        page.perform :search, 'gizmo'
+        page.has_selector? 'input[name="q"]'
       end
     end
 
-    it "should perform a search when clicking the magnifying glass" do
+    it "should search for repositories" do
       on_page_with :github_search do |page|
-        click page.search_form.submit.attr('alt').value
+        page.perform :search, 'gizmo'
       end
     end
 

@@ -20,7 +20,7 @@ module PageWithGithubSearchResults
 
   def build_repositories
     element_struct do |repos|
-      container = find_results_container "Repositories"
+      container = find 'div#code_search_results'
       repos.heading = find 'div.header'
       repos.results = all('div.result').map { |result| build_repository_result result }
     end
@@ -30,18 +30,10 @@ module PageWithGithubSearchResults
     element_struct do |repo_result|
       repo_result.title = find 'h2.title'
       repo_result.link = repo_result.title.find 'a'
-      link_parts = repo_result.link.inner_text.split('/').map(&:strip)
+      link_parts = repo_result.link.text.split('/').map(&:strip)
       repo_result.author = link_parts[0]
       repo_result.name = link_parts[1]
     end
-  end
-
-  def find_results_container heading_text
-    all_headings = document.css('div.header')
-    header = all_headings.find do |heading_element|
-      heading_element.find('div.title').inner_text =~ /#{heading_text} \((.+)\)/
-    end
-    header.parent unless header.nil?
   end
 
 end

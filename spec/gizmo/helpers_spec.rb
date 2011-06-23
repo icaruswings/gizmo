@@ -54,6 +54,33 @@ describe "Gizmo" do
 
     end
 
+    describe "#using_workflow" do
+
+      it "should raise an ArgumentError if module_name is not a symbol" do
+        lambda { using_workflow 'my_module_name' }.should raise_error(ArgumentError, "module_name must be a symbol")
+      end
+
+      it "should raise Gizmo::MixinNotFoundError if the mixin file cannot be loaded from the mixin_path" do
+        error_msg = Gizmo::Templates::WorkflowMixin.render(self, {:const_name => "WorkflowNonExistentMixin", :mixin_name => "page_with_non_existent_mixin"})
+        lambda { using_workflow :non_existent_mixin }.should raise_error(Gizmo::MixinNotFoundError, /#{ error_msg }/)
+      end
+
+      it "should yield a workflow object to a block if supplied" do
+        using_workflow(:my_flow) { |workflow| workflow.should_not be_nil }
+      end
+
+      it "should yield a workflow object to a block" do
+        using_workflow(:my_flow) { |workflow| workflow.should be_a Gizmo::Workflow }
+      end
+
+      it "should return a page object which has been extended to include the mixin functionality" do
+        using_workflow(:my_flow) do |workflow|
+          workflow.should respond_to :my_method
+        end
+      end
+
+    end
+
 
     describe "#on_page_with" do
       it "should raise an error if one or more module_names are given" do
@@ -77,7 +104,7 @@ describe "Gizmo" do
       end
 
       it "should raise Gizmo::MixinNotFoundError if the mixin file cannot be loaded from the mixin_path" do
-        error_msg = Gizmo::Templates::PageMixin.render(self, { :const_name => "PageWithMyNonExistentMixin", :mixin_name => "page_with_my_non_existent_mixin" })
+        error_msg = Gizmo::Templates::PageMixin.render(self, {:const_name => "PageWithMyNonExistentMixin", :mixin_name => "page_with_my_non_existent_mixin"})
         lambda { on_page_with :my_non_existent_mixin }.should raise_error(Gizmo::MixinNotFoundError, /#{ error_msg }/)
       end
 

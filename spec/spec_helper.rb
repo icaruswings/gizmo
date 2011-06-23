@@ -23,6 +23,10 @@ module PageWithMyElementStruct
   def my_element_struct; element_struct; end
 end
 
+module MyFlowWorkflow
+  def my_method; nil; end
+end
+
 module PageWithMyMixin
   def my_method; nil; end
 end

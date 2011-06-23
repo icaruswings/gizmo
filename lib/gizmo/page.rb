@@ -2,7 +2,7 @@ module Gizmo
 
   class Page
 
-    attr_reader :url, :document
+    attr_reader :url
 
     def initialize world, url
       @world = world

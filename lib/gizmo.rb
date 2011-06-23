@@ -10,10 +10,12 @@ $LOAD_PATH << File.dirname(__FILE__)
 
 module Gizmo
 
-  autoload :Page,       "gizmo/page"
-  autoload :Helpers,    "gizmo/helpers"
-  autoload :PageMixin,  "gizmo/page_mixin"
-  autoload :Templates,  "gizmo/templates"
+  autoload :Page,           "gizmo/page"
+  autoload :Workflow,       "gizmo/workflow"
+  autoload :WorkflowMixin,  "gizmo/workflow_mixin"
+  autoload :Helpers,        "gizmo/helpers"
+  autoload :PageMixin,      "gizmo/page_mixin"
+  autoload :Templates,      "gizmo/templates"
 
   GizmoError = Class.new(StandardError)
   MixinNotValidError = Class.new(GizmoError)

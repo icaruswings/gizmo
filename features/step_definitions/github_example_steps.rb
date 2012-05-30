@@ -1,31 +1,29 @@
-Given /^a user is on the github homepage$/ do
-  visit "http://github.com"
+##################################### Given ###################################
+
+Given /^I'm on the github homepage$/ do
+  visit 'http://github.com'
 end
 
-When /^the user enters "([^\"]*)" into the search box and clicks the magnifying glass icon$/ do |query|
-  on_page_with :github_search do |page|
-    page.perform :search, query
+##################################### When ####################################
+
+When /^I search for "([^\"]*)"$/ do |query|
+  on_page_with :github_search do |search_page|
+    search_page.perform :search, query
   end
 end
 
-When /^the user clicks on the "([^\"]*)" link$/ do |text|
-  click_link text
+When /^I select the "([^\"]*)" repository$/ do |repository|
+  on_page_with :github_search_results do |search_results_page|
+    search_results_page.perform :select_repository, repository
+  end
 end
 
-Then /^the user is on a github repository details page$/ do
+##################################### Then ####################################
+
+Then /^I'm taken to the "([^\"]*)", "([^\"]*)" github repository details page$/ do |author, repo_name|
   on_page_with :github_repo_details do |page|
     page.should be_valid
-  end
-end
-
-Then /^the user is on the "([^\"]*)" github repository details page$/ do |repo_name|
-  on_page_with :github_repo_details do |page|
     page.repo_details.name.should == repo_name
-  end
-end
-
-Then /^the user is on a github repository details page which belongs to "([^\"]*)"$/ do |author|
-  on_page_with :github_repo_details do |page|
     page.repo_details.author.should == author
   end
 end

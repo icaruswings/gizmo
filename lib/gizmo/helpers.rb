@@ -2,10 +2,10 @@ module Gizmo
 
   module Helpers
 
+
     def on_page &block
-      resp = response
-      raise NilResponseError, "Doh! response object is nil. This generally means your scenario has not yet visited a page!" if resp.nil?
-      yield Page.new(self, resp.body, current_url)
+      raise NilResponseError, "Doh! response object is nil. This generally means your scenario has not yet visited a page!" if body.nil?
+      yield Page.new(self, current_url)
     end
 
     def on_page_with *module_names
@@ -19,7 +19,40 @@ module Gizmo
       end
     end
 
+    def using_workflow module_name
+      raise ArgumentError, 'module_name must be a symbol' unless module_name.is_a?(Symbol)
+      workflow = Workflow.new(self)
+      workflow.extend(load_workflow!(module_name))
+      yield workflow if block_given?
+    end
+
     private
+
+    def load_workflow! workflow_name
+      begin
+        mixin_dir = Gizmo.configuration.mixin_dir
+        const_name = "#{workflow_name.to_s.camelize}Workflow"
+        mixin = Dir["#{mixin_dir}/**/#{workflow_name}_workflow.rb"].first
+        require (mixin || "#{mixin_dir}/#{workflow_name}_workflow.rb") unless Object.const_defined?(const_name)
+        Object.const_get(const_name)
+      rescue LoadError
+        raise MixinNotFoundError, error_body = <<EOS
+
+-------------------------------------------------
+!!! There was no #{workflow_name}_workflow file !!!
+-------------------------------------------------
+You can create a new file at:
+#{mixin_dir}/#{workflow_name}_workflow .rb
+
+then just copy the mixin code below into it
+and you'll be ready to gizmo!
+------------------------------------------------
+
+#{Gizmo::Templates::WorkflowMixin.render(self, :const_name => const_name, :mixin_name => workflow_name)}
+
+EOS
+      end
+    end
 
     def load_mixin! mixin_name
       begin
@@ -53,5 +86,4 @@ EOS
     end
 
   end
-
 end

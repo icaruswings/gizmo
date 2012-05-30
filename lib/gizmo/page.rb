@@ -2,11 +2,10 @@ module Gizmo
 
   class Page
 
-    attr_reader :url, :document
+    attr_reader :url
 
-    def initialize driver, content, url
-      @browser = driver
-      @document = Nokogiri::HTML(content)
+    def initialize world, url
+      @world = world
       @url = url
     end
 
@@ -18,10 +17,8 @@ module Gizmo
     # def valid?
     #   has_selector?('some_element_selector')
     # end
-    def valid?; true; end
-
-    def has_selector? css_selector
-      @document.css(css_selector).length > 0
+    def valid?;
+      true;
     end
 
     def perform action_name, *params
@@ -32,13 +29,15 @@ module Gizmo
 
     def method_missing name, *args
       method_name = name.to_sym
-      return super unless browser.respond_to?(method_name)
-      browser.send(method_name, *args)
+      return super unless world.respond_to?(method_name)
+      world.send(method_name, *args)
     end
 
     private
 
-    def browser; @browser; end
+    def world;
+      @world;
+    end
 
     def define_action action_name, &block
       self.class.send(:define_method, "#{action_name.to_s}_action".to_sym, &block)

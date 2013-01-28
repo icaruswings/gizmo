@@ -1,5 +1,5 @@
 Given /^a user is on the github homepage$/ do
-  visit "http://github.com"
+  visit "http://github.com/search"
 end
 
 When /^the user enters "([^\"]*)" into the search box and clicks the magnifying glass icon$/ do |query|

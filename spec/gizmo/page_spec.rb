@@ -5,8 +5,8 @@ describe "Gizmo" do
   describe "Page" do
 
     before do
-      def response
-        mock_response = <<-eos
+      def source
+        source = <<-eos
           <html>
             <head>
               <title>my awesome web page</title>
@@ -18,10 +18,9 @@ describe "Gizmo" do
             </body>
           </html>
         eos
-        @response ||= mock('response', :body => mock_response)
       end
 
-      @page = Gizmo::Page.new(self, response.body, 'http://www.example.com')
+      @page = Gizmo::Page.new(self, source, 'http://www.example.com')
     end
 
     describe "attributes and accessors" do

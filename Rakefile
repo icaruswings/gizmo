@@ -29,15 +29,7 @@ require 'metric_fu'
 
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec) do |spec|
-  # spec.libs << 'lib' << 'spec'
   spec.pattern = FileList['spec/**/*_spec.rb']
-end
-
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  # spec.libs << 'lib/gizmo'
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
-  spec.rcov_opts = ['--failure-threshold', 100, '--exclude', 'features,.gems']
 end
 
 task :spec

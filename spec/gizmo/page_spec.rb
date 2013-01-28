@@ -63,7 +63,7 @@ describe "Gizmo" do
       end
 
       it "should have a private attribute reader for browser" do
-        @page.private_methods.should include "browser"
+        @page.private_methods.should include :browser
       end
 
     end

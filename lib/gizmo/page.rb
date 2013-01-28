@@ -1,3 +1,5 @@
+require "ostruct"
+
 module Gizmo
 
   class Page

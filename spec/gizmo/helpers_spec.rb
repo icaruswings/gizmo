@@ -35,7 +35,7 @@ describe "Gizmo" do
 
     describe "#on_page" do
       it "should raise an error if no block given" do
-        lambda { on_page }.should raise_error("no block given")
+        lambda { on_page }.should raise_error("no block given (yield)")
       end
 
       it "should not raise an error if given a block" do

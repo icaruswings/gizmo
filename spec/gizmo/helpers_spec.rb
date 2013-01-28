@@ -5,8 +5,8 @@ describe "Gizmo" do
   describe "Helpers" do
 
     before do
-      def response
-        mock_response = <<-eos
+      def source
+        result = <<-eos
           <html>
             <head>
               <title>my awesome web page</title>
@@ -18,7 +18,6 @@ describe "Gizmo" do
             </body>
           </html>
         eos
-        @response ||= mock('response', :body => mock_response)
       end
 
       def current_url
@@ -36,7 +35,7 @@ describe "Gizmo" do
 
     describe "#on_page" do
       it "should raise an error if no block given" do
-        lambda { on_page }.should raise_error("no block given")
+        lambda { on_page }.should raise_error("no block given (yield)")
       end
 
       it "should not raise an error if given a block" do
@@ -48,7 +47,7 @@ describe "Gizmo" do
       end
 
       it "should raise an error if the response object is nil" do
-        response.stub!(:nil?).and_return(true)
+        def source;end
         lambda { on_page { |page| page } }.should raise_error(Gizmo::NilResponseError, "Doh! response object is nil. This generally means your scenario has not yet visited a page!")
       end
 

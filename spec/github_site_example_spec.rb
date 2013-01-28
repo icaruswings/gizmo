@@ -2,12 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 require 'capybara'
 require 'capybara/dsl'
-require File.expand_path(File.dirname(__FILE__) + '/../features/support/patches/capybara')
 
 Capybara.default_driver = :selenium
 Capybara.run_server = false
-Spec::Runner.configure do |config|
-  config.include Capybara
+RSpec.configure do |config|
+  config.include Capybara::DSL
 end
 
 
@@ -21,17 +20,11 @@ describe "Github" do
 
   describe "Home Page Search" do
 
-    before(:all) { visit 'http://github.com' }
+    before(:all) { visit 'http://github.com/search' }
 
     it "should have a text input which accepts a search query" do
       on_page_with :github_search do |page|
         page.perform :search, 'gizmo'
-      end
-    end
-
-    it "should perform a search when clicking the magnifying glass" do
-      on_page_with :github_search do |page|
-        click page.search_form.submit.attr('alt').value
       end
     end
 

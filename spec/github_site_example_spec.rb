@@ -35,7 +35,7 @@ describe "Github" do
 
     it "should redirect to the search results page with gizmo as the first result" do
       on_page_with :github_search_results do |page|
-        page.search_results.repositories.results.first.name.should == 'gizmo'
+        expect(page.search_results.repositories.results.first.name).to eq('gizmo')
       end
     end
 

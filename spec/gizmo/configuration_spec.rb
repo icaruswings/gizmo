@@ -5,11 +5,11 @@ describe "Gizmo" do
   describe "Configuration" do
 
     it "should have a mixin_dir reader" do
-        Gizmo.config.should respond_to(:mixin_dir)
+        expect(Gizmo.config).to respond_to(:mixin_dir)
     end
 
     it "should have a mixin_dir writer" do
-        Gizmo.config.should respond_to(:mixin_dir=)
+        expect(Gizmo.config).to respond_to(:mixin_dir=)
     end
     
     it "should be configurable with a block" do
@@ -18,7 +18,7 @@ describe "Gizmo" do
       end
 
       config = Gizmo.config
-      config.mixin_dir.should == 'blah'
+      expect(config.mixin_dir).to eq('blah')
     end
 
   end

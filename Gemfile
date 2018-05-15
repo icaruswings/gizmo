@@ -1,4 +1,5 @@
 source :rubygems
+ruby '2.4.3'
 
 gem "nokogiri", ">= 1.4.1"
 gem "activesupport", "~> 4.2.10"

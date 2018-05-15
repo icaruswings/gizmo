@@ -1,7 +1,7 @@
 source :rubygems
 
 gem "nokogiri", ">= 1.4.1"
-gem "activesupport", "~> 2.3.5"
+gem "activesupport", "~> 4.2.10"
 gem "tilt", ">= 1.0.1"
 gem "config_newton", ">= 0.1.1"
 

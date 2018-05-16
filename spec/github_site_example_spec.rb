@@ -32,11 +32,18 @@ describe "Github", type: :feature do
 
     it "should perform a search when clicking the magnifying glass" do
       on_page_with :github_search do |page|
+	      require 'pry'
+	      require 'pry-nav'
+	      binding.pry
         click_link_or_button page.search_form.submit.attr('alt').value
       end
     end
 
     it "should redirect to the search results page with gizmo as the first result" do
+      on_page_with :github_search do |page|
+        page.perform :search, 'gizmo'
+      end
+
       on_page_with :github_search_results do |page|
         expect(page.search_results.repositories.results.first.name).to eq('gizmo')
       end
@@ -46,7 +53,7 @@ describe "Github", type: :feature do
 
   describe "Repo Details" do
 
-    before(:all) { visit 'http://github.com/icaruswings/gizmo' }
+    before { visit 'http://github.com/icaruswings/gizmo' }
 
     it "should have the expected repository name" do
       on_page_with :github_repo_details do |page|

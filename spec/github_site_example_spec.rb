@@ -1,15 +1,18 @@
-require 'capybara'
+require 'rails_helper'
 require 'capybara/dsl'
 require File.expand_path(File.dirname(__FILE__) + '/../features/support/patches/capybara')
 
-Capybara.default_driver = :selenium
-Capybara.run_server = false
 RSpec.configure do |config|
-  config.include Capybara
+  config.include Capybara::DSL
 end
 
 
-describe "Github" do
+Capybara.configure do |config|
+  config.run_server = false
+	config.default_driver = :selenium
+end
+
+describe "Github", type: :feature do
 
   before do
     Gizmo.configure do |config|
@@ -19,7 +22,7 @@ describe "Github" do
 
   describe "Home Page Search" do
 
-    before(:all) { visit 'http://github.com' }
+    before { visit 'http://github.com' }
 
     it "should have a text input which accepts a search query" do
       on_page_with :github_search do |page|

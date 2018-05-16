@@ -13,4 +13,6 @@ group :development do
   gem 'cucumber'
   gem 'webrat'
   gem 'capybara'
+  # To use the celenium properly, ensure your firefox version should be 46.0.1
+  gem 'selenium-webdriver', '~> 2.53.4'
 end

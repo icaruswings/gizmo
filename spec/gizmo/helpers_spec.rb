@@ -40,7 +40,7 @@ describe "Gizmo" do
       end
 
       it "should not raise an error if given a block" do
-        expect { on_page { |page| return page } }.not_to raise_error
+        expect { on_page { |page| page } }.not_to raise_error
       end
 
       it "should yield a page object" do

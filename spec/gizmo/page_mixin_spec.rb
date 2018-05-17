@@ -14,7 +14,7 @@ describe "Gizmo" do
 
     describe "#define_action" do
       it "should be a private method" do
-        expect(MyModule.private_methods).to include 'define_action'
+        expect(MyModule.private_methods).to include :define_action
       end
 
       it "should define a new action" do

@@ -62,7 +62,7 @@ describe "Gizmo" do
       end
 
       it "should have a private attribute reader for browser" do
-        expect(@page.private_methods).to include "browser"
+        expect(@page.private_methods).to include :browser
       end
 
     end

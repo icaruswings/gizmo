@@ -12,6 +12,11 @@ module PageWithGithubSearchResults
     end
   end
 
+  def advanced_search
+    element_struct do |search|
+      search.button = @document.css(".application-main a[href='/search/advanced?q=gizmo']")
+    end
+  end
 
   private
 

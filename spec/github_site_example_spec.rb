@@ -10,28 +10,20 @@ describe "Github", type: :feature do
 
   describe "Home Page Search" do
 
-    before { visit 'http://github.com' }
-
-    it "should have a text input which accepts a search query" do
+    before {
+	    visit 'http://github.com'
       on_page_with :github_search do |page|
         page.perform :search, 'gizmo'
       end
-    end
+    }
 
     it "should perform a search when clicking the magnifying glass" do
-      on_page_with :github_search do |page|
-	      require 'pry'
-	      require 'pry-nav'
-	      binding.pry
-        click_link_or_button page.search_form.submit.attr('alt').value
+      on_page_with :github_search_results do |page|
+	      click_link_or_button page.advanced_search.button.text
       end
     end
 
     it "should redirect to the search results page with gizmo as the first result" do
-      on_page_with :github_search do |page|
-        page.perform :search, 'gizmo'
-      end
-
       on_page_with :github_search_results do |page|
         expect(page.search_results.repositories.results.first.name).to eq('gizmo')
       end
@@ -54,7 +46,5 @@ describe "Github", type: :feature do
         page.repo_details.author == 'icaruswings'
       end
     end
-
   end
-
 end

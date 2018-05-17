@@ -12,20 +12,8 @@ When /^the user clicks on the "([^\"]*)" link$/ do |text|
   click_link text
 end
 
-Then /^the user is on a github repository details page$/ do
-  on_page_with :github_repo_details do |page|
-    page.should be_valid
-  end
-end
-
-Then /^the user is on the "([^\"]*)" github repository details page$/ do |repo_name|
-  on_page_with :github_repo_details do |page|
-    page.repo_details.name.should == repo_name
-  end
-end
-
-Then /^the user is on a github repository details page which belongs to "([^\"]*)"$/ do |author|
-  on_page_with :github_repo_details do |page|
-    page.repo_details.author.should == author
+Then /^the user is on the "([^\"]*)" github advanced search page$/ do |button_name|
+  on_page_with :github_advanced_search do |page|
+    page.advanced_search_form.search_button.should == button_name
   end
 end

@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/../../features/support/patches/capybara')
 
 describe "Gizmo" do
 
@@ -48,7 +49,7 @@ describe "Gizmo" do
       end
 
       it "should raise an error if the response object is nil" do
-        allow(response).to receive(:nil?).and_return(true)
+        allow(Capybara.response).to receive(:nil?).and_return(true)
         expect { on_page { |page| page } }.to raise_error(Gizmo::NilResponseError, "Doh! response object is nil. This generally means your scenario has not yet visited a page!")
       end
 

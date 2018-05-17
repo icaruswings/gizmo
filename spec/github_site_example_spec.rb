@@ -1,16 +1,4 @@
-require 'rails_helper'
-require 'capybara/dsl'
-require File.expand_path(File.dirname(__FILE__) + '/../features/support/patches/capybara')
-
-RSpec.configure do |config|
-  config.include Capybara::DSL
-end
-
-
-Capybara.configure do |config|
-  config.run_server = false
-	config.default_driver = :selenium
-end
+require 'spec_helper'
 
 describe "Github", type: :feature do
 

@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
      "features/step_definitions/github_example_steps.rb",
      "features/support/env.rb",
      "features/support/pages/page_with_github_repo_details.rb",
+     "features/support/pages/page_with_github_advanced_search.rb",
      "features/support/pages/page_with_github_search.rb",
      "features/support/pages/page_with_github_search_results.rb",
      "features/support/patches/capybara.rb",

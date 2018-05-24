@@ -1,20 +1,29 @@
+require 'rubygems'
+require 'bundler/setup'
+$LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+require 'rspec'
+require 'rspec/autorun'
 require 'gizmo'
-
-require 'spec'
-require 'spec/autorun'
+require 'capybara/rspec'
+require 'capybara/dsl'
+require File.expand_path(File.dirname(__FILE__) + '/../features/support/patches/capybara')
 
 begin require 'redgreen' unless ENV['TM_CURRENT_LINE']; rescue LoadError; end
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include Gizmo::Helpers
-
+  config.include Capybara::DSL
   config.before do
     Gizmo.configure do |config|
       config.mixin_dir = File.dirname(__FILE__) + '/pages'
     end
   end
+end
 
+Capybara.configure do |config|
+  config.run_server = false
+  config.default_driver = :selenium
 end
 
 module PageWithMyElementStruct

@@ -4,7 +4,6 @@ require 'active_support'
 
 require 'nokogiri'
 require 'tilt'
-require 'term/ansicolor'
 
 $LOAD_PATH << File.dirname(__FILE__)
 
@@ -19,7 +18,6 @@ module Gizmo
   MixinNotValidError = Class.new(GizmoError)
   MixinNotFoundError = Class.new(GizmoError)
   NilResponseError = Class.new(GizmoError)
-
 end
 
 require "gizmo/configuration"

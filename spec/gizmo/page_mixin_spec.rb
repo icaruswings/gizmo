@@ -14,16 +14,16 @@ describe "Gizmo" do
 
     describe "#define_action" do
       it "should be a private method" do
-        MyModule.private_methods.should include 'define_action'
+        expect(MyModule.private_methods).to include :define_action
       end
 
       it "should define a new action" do
         MyModule.send(:define_action, :x) { |x| x }
-        @obj.should respond_to :x_action
+        expect(@obj).to respond_to :x_action
       end
 
       it "should call a defined action and return the expected response" do
-        @obj.perform(:tell, "hello world").should == "hello world"
+        expect(@obj.perform(:tell, "hello world")).to eq("hello world")
       end
 
     end
